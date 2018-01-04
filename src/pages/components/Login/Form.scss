@@ -1,0 +1,40 @@
+
+@import "../../../css/themes/default";
+@import "../../../css/mixins/index";
+
+.v-login-form {
+	label {
+		width: 100px;
+		display: inline-block;
+		text-align: right;
+		padding-right: 5px;
+		box-sizing: border-box;
+		&:before {
+			display: inline-block;
+			margin-right: 4px;
+			content: "*";
+			font-family: SimSun;
+			font-size: 12px;
+			color: $font-color-deep;
+		}
+	}
+}
+
+.v-login-bg {
+	// background: url(./logo-bg.png) no-repeat;
+	background-size: 100% 100%;
+	height: 400px;
+	margin-bottom: 30px;
+	._logo {
+		text-align: center;
+		padding-top: 120px;
+	}
+	h1 {
+		margin-bottom: 30px;
+		margin-top: 30px;
+		text-align: center;
+		color: white;
+		font-size: 32px;
+		letter-spacing: 5px;
+	}
+}

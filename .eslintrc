@@ -1,0 +1,148 @@
+{
+	"parserOptions":
+	{
+		"ecmaVersion": 6,
+		"sourceType": "module",
+		"ecmaFeatures":
+		{
+			"jsx": true
+		}
+	},
+	"env":
+	{
+		"browser": true,
+		"node": true,
+		"es6": true,
+		"mocha": true
+	},
+	"plugins": [
+		"react"
+	],
+	"parser": "babel-eslint",
+	"rules":
+	{
+		// tab缩进
+		"indent": ["warn", "tab",
+		{
+			"SwitchCase": 1
+		}],
+		"quotes": 0,
+		"no-console": 0,
+		"no-debugger": 1,
+		"no-var": 1,
+		"import/named": 0,
+		"semi": [
+			1,
+			"always"
+		],
+		"no-trailing-spaces": 0,
+		"eol-last": 0,
+		"no-underscore-dangle": 0,
+		"no-alert": 0,
+		"no-lone-blocks": 0,
+		// 关键字周围强制使用空格
+		"keyword-spacing": [
+			"error",
+			{
+				"before": true,
+				"after": true
+			}
+		],
+		// 大括号中强制使用空格
+		"object-curly-spacing": [
+			"warn",
+			"always"
+		],
+		// 单行代码块前后要加空格
+		"block-spacing": [
+			"warn",
+			"always"
+		],
+		// 逗号后面加空格
+		"comma-spacing": [
+			"warn",
+			{
+				"before": false,
+				"after": true
+			}
+		],
+		// 分号后面加空格
+		"semi-spacing": [
+			"warn",
+			{
+				"before": false,
+				"after": true
+			}
+		],
+		// 在注释前有空白
+		"spaced-comment": [
+			"warn",
+			"always"
+		],
+		// 箭头函数前后要有空格
+		"arrow-spacing": [
+			"warn",
+			{
+				"before": true,
+				"after": true
+			}
+		],
+		// 对象字面量的属性中键和值之间使用一致的间距
+		"key-spacing": [
+			"warn",
+			{
+				"beforeColon": false,
+				"afterColon": true
+			}
+		],
+		// 要求操作符周围有空格
+		"space-infix-ops": [
+			"warn",
+			{
+				"int32Hint": false
+			}
+		],
+		"jsx-quotes": 1,
+		"react/display-name": [
+			1,
+			{
+				"ignoreTranspilerName": false
+			}
+		],
+		"react/forbid-prop-types": [
+			1,
+			{
+				"forbid": [
+					"any"
+				]
+			}
+		],
+		"react/jsx-boolean-value": 0,
+		"react/jsx-closing-bracket-location": 0,
+		"react/jsx-curly-spacing": 1,
+		"react/jsx-indent-props": 0,
+		"react/jsx-key": 1,
+		"react/jsx-max-props-per-line": 0,
+		"react/jsx-no-bind": 0,
+		"react/jsx-no-duplicate-props": 1,
+		"react/jsx-no-literals": 0,
+		"react/jsx-no-undef": 1,
+		"react/jsx-pascal-case": 1,
+		"react/jsx-sort-prop-types": 0,
+		"react/jsx-sort-props": 0,
+		"react/jsx-uses-react": 1,
+		"react/jsx-uses-vars": 1,
+		"react/no-danger": 0,
+		"react/no-did-mount-set-state": 1,
+		"react/no-did-update-set-state": 1,
+		"react/no-direct-mutation-state": 1,
+		"react/no-multi-comp": 1,
+		"react/no-set-state": 0,
+		"react/no-unknown-property": 1,
+		"react/prefer-es6-class": 1,
+		"react/prop-types": 0,
+		"react/react-in-jsx-scope": 1,
+		"react/self-closing-comp": 1,
+		"react/sort-comp": 1
+	}
+}

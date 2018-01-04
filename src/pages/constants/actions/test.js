@@ -1,0 +1,8 @@
+export const TEST_MAIN_GET = 'TEST_MAIN_GET';
+export const TEST_SECOND_GET = 'TEST_SECOND_GET';
+
+
+
+export const TEST_THIRD_ONE_GET = 'TEST_THIRD_ONE_GET';
+export const TEST_THIRD_TWO_GET = 'TEST_THIRD_TWO_GET';
+export const TEST_THIRD_THREE_GET = 'TEST_THIRD_THREE_GET';
