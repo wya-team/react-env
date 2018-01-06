@@ -5,3 +5,10 @@ import * as types from '../constants/actions/layout';
  */
 export { request } from './_common/request';
 
+export const initHomeMain = () => {
+	return {
+		type: types.LOYOUT_HOME_MAIN_INIT
+	};
+};
+
+

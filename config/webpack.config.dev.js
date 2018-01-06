@@ -1,6 +1,6 @@
 process.env.NODE_ENV = 'development';
 const path = require('path');
-const node_modules = path.resolve(__dirname, 'node_modules');
+const node_modules = path.resolve(__dirname, '../', 'node_modules');
 
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
@@ -18,7 +18,7 @@ let webpackConfig = {
 		 * 输出html
 		 */
 		new HtmlWebpackPlugin({
-			template: path.resolve(__dirname, 'src/static/index.tpl.html'),
+			template: path.resolve(__dirname, '../', 'src/static/index.tpl.html'),
 			chunks: ['common', 'main'], // 当前路由所包含的模块，注意common引入方式
 			inject: 'body',
 			filename: './index.html'

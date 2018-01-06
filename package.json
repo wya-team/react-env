@@ -6,17 +6,18 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "npm run prompt && npm run all",
-    "serve": "node --max_old_space_size=8192 ./node_modules/webpack-dev-server/bin/webpack-dev-server --config  webpack.config.dev.js --color --progress --hot",
-    "dist": "npm run remove:dist && npm run lint && node --max_old_space_size=8192 ./node_modules/webpack/bin/webpack --config webpack.config.dist.js --color --progress",
+    "serve": "node --max_old_space_size=8192 ./node_modules/webpack-dev-server/bin/webpack-dev-server --config  ./config/webpack.config.dev.js --color --progress --hot",
+    "dist": "npm run remove:dist && npm run lint && node --max_old_space_size=8192 ./node_modules/webpack/bin/webpack --config ./config/webpack.config.dist.js --color --progress",
     "build": "npm run dist -- -p",
     "build:dev": "npm run dist",
     "remove:dist": "rm -rf ./dist",
-    "lint": "esw *.config.* ./src/pages",
+    "lint": "esw ./config/*.config.* ./src/pages",
     "lint:fix": "npm run lint -- --fix",
     "lint:watch": "npm run lint -- --fix --watch",
     "mock": "cd ./src/mock && npm run start",
-    "prompt": "node ./prompt.config.js",
-    "all": "npm-run-all --parallel --race --continue-on-error lint:watch serve"
+    "prompt": "node ./config/prompt.config.js",
+    "all": "npm-run-all --parallel --race --continue-on-error lint:watch serve",
+    "postinstall": "cp .hooks/* .git/hooks/"
   },
   "author": "wya-team",
   "license": "MIT",

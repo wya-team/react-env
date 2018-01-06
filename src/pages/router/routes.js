@@ -25,6 +25,6 @@ export const routeConfig = [
 	// error
 	{
 		path: '*',
-		onEnter: (nextState, replace) => replace('/p/')
+		onEnter: (nextState, replace) => replace('/p/home')
 	}
 ];

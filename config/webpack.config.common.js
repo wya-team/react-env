@@ -29,33 +29,41 @@ const localIp = (() => {
 	}
 	return ips[0] || 'localhost';
 })();
+const postcssLoader = {
+	loader: 'postcss-loader',
+	options: {
+		config: {
+			path: path.resolve(__dirname, '../', 'config/postcss.config.js')
+		}
+	}
+};
 const webpackConfig = {
 	resolve: {// 重定向路径
 		mainFiles: ['index.web', 'index'],
-		modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+		modules: [path.resolve(__dirname, '../', 'src'), 'node_modules'],
 		extensions: ['.web.tsx', '.web.ts', '.web.jsx', '.web.js', '.ts', '.tsx', '.js', '.jsx', '.json', '.css', '.less', '.scss'],
 		alias: {
 			// 依赖
-			'react': path.resolve(__dirname, 'node_modules/react/cjs/react.production.min.js'),
-			'react-router': path.resolve(__dirname, 'node_modules/react-router/umd/ReactRouter.min.js'),
-			'react-dom': path.resolve(__dirname, 'node_modules/react-dom/cjs/react-dom.production.min.js'),
-			'react-redux': path.resolve(__dirname, 'node_modules/react-redux/dist/react-redux.min.js'),
-			'react-router-redux': path.resolve(__dirname, 'node_modules/react-router-redux/dist/ReactRouterRedux.min.js'),
-			'redux-thunk': path.resolve(__dirname, 'node_modules/redux-thunk/dist/redux-thunk.min.js'),
-			'rc-form': path.resolve(__dirname, 'node_modules/rc-form/dist/rc-form.min.js'),
-			'redux': path.resolve(__dirname, 'node_modules/redux/dist/redux.min.js'),
-			'immutable': path.resolve(__dirname, 'node_modules/immutable/dist/immutable.min.js'),
-			'babel-polyfill': path.resolve(__dirname, 'node_modules/babel-polyfill/dist/polyfill.min.js'),
-			'lrz': path.resolve(__dirname, 'node_modules/lrz/dist/lrz.all.bundle.js'),
+			'react': path.resolve(__dirname, '../', 'node_modules/react/cjs/react.production.min.js'),
+			'react-router': path.resolve(__dirname, '../', 'node_modules/react-router/umd/ReactRouter.min.js'),
+			'react-dom': path.resolve(__dirname, '../', 'node_modules/react-dom/cjs/react-dom.production.min.js'),
+			'react-redux': path.resolve(__dirname, '../', 'node_modules/react-redux/dist/react-redux.min.js'),
+			'react-router-redux': path.resolve(__dirname, '../', 'node_modules/react-router-redux/dist/ReactRouterRedux.min.js'),
+			'redux-thunk': path.resolve(__dirname, '../', 'node_modules/redux-thunk/dist/redux-thunk.min.js'),
+			'rc-form': path.resolve(__dirname, '../', 'node_modules/rc-form/dist/rc-form.min.js'),
+			'redux': path.resolve(__dirname, '../', 'node_modules/redux/dist/redux.min.js'),
+			'immutable': path.resolve(__dirname, '../', 'node_modules/immutable/dist/immutable.min.js'),
+			'babel-polyfill': path.resolve(__dirname, '../', 'node_modules/babel-polyfill/dist/polyfill.min.js'),
+			'lrz': path.resolve(__dirname, '../', 'node_modules/lrz/dist/lrz.all.bundle.js'),
 			// 其他
-			'pure-render-decorator': path.resolve(__dirname, 'src/pages/utils/pure-render-decorator'),
-			// '@'								: path.resolve(__dirname, 'src/pages'),
-			'@common': path.resolve(__dirname, 'src/pages/components/_common'),
+			'pure-render-decorator': path.resolve(__dirname, '../', 'src/pages/utils/pure-render-decorator'),
+			// '@'								: path.resolve(__dirname, '../', 'src/pages'),
+			'@common': path.resolve(__dirname, '../', 'src/pages/components/_common'),
 			// 主端
-			'@actions': path.resolve(__dirname, 'src/pages/actions'),
-			'@components': path.resolve(__dirname, 'src/pages/components'),
-			'@constants': path.resolve(__dirname, 'src/pages/constants'),
-			'@utils': path.resolve(__dirname, 'src/pages/utils'),
+			'@actions': path.resolve(__dirname, '../', 'src/pages/actions'),
+			'@components': path.resolve(__dirname, '../', 'src/pages/components'),
+			'@constants': path.resolve(__dirname, '../', 'src/pages/constants'),
+			'@utils': path.resolve(__dirname, '../', 'src/pages/utils'),
 		}
 	},
 	entry: {
@@ -73,11 +81,11 @@ const webpackConfig = {
 			'immutable',
 			'pure-render-decorator'
 		],
-		main: path.resolve(__dirname, 'src/pages/main.js') 
+		main: path.resolve(__dirname, '../', 'src/pages/main.js') 
 
 	},
 	output: {
-		path: path.resolve(__dirname, 'dist'),
+		path: path.resolve(__dirname, '../', 'dist'),
 		filename: 'js/[name].[hash:8].bundle.js',  // 每个页面对应的主js的生成配置
 		chunkFilename: 'js/[name].[hash:8].chunk.js',  // chunk生成的配置
 		sourceMapFilename: 'js/[name].[hash:8].bundle.map',
@@ -96,7 +104,7 @@ const webpackConfig = {
 					/**
 					 * 在node_modules的文件不被babel理会
 					 */
-					path.resolve(__dirname, 'node_modules'),
+					path.resolve(__dirname, '../', 'node_modules'),
 				],
 				use: [
 					{
@@ -109,24 +117,24 @@ const webpackConfig = {
 			}, 
 			{
 				test: /\.(css|scss)$/,
-				use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+				use: ['style-loader', 'css-loader', postcssLoader, 'sass-loader'],
 				include: [
 					// 需要引入antd-mobile，后续可以等它支持2.x做修改
-					path.resolve(__dirname, "node_modules"),
-					path.resolve(__dirname, "")
+					path.resolve(__dirname, '../', "node_modules"),
+					path.resolve(__dirname, '../', "")
 				]
 			},
 			{
 				test: /\.less$/,
-				use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
+				use: ['style-loader', 'css-loader', postcssLoader, 'less-loader'],
 			},
 			{
 				test: /\.scss$/,
-				include: [path.resolve(__dirname, "src/css")],
-				exclude: [path.resolve(__dirname, "node_modules"), path.resolve(__dirname, "src/pages")], 
+				include: [path.resolve(__dirname, '../', "src/css")],
+				exclude: [path.resolve(__dirname, '../', "node_modules"), path.resolve(__dirname, '../', "src/pages")], 
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
-					use: ['css-loader', 'postcss-loader', 'sass-loader']
+					use: ['css-loader', postcssLoader, 'sass-loader']
 				})
 			},
 			{
@@ -150,7 +158,7 @@ const webpackConfig = {
 				include: [
 					// antd-mobile 内置svg，后续可以等它支持2.x做修改
 					require.resolve('antd-mobile').replace(/warn\.js$/, ''), 
-					path.resolve(__dirname, ''),  // 业务代码本地私有 svg 存放目录
+					path.resolve(__dirname, '../', ''),  // 业务代码本地私有 svg 存放目录
 				],
 			}
 		]

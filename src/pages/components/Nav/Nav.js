@@ -9,7 +9,7 @@ class Nav extends Component {
 	}
 	handleInitList = (e) => {
 		e.preventDefault();
-		this.props.actions.initHomeList();
+		this.props.actions.initHomeMain();
 		_global.history.replace("/p/home");
 	}
 	render() {
