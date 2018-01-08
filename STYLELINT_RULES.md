@@ -26,3 +26,6 @@
 + selector-pseudo-element-colon-notation: 为适用的伪元素指定单冒号或双冒号符号
 + unit-no-unknown: 不允许位置单位
 + value-list-max-empty-lines: 属性值之间的最大空行
++ block-closing-brace-empty-line-before: `{}`闭合前是否空一行
++ declaration-bang-space-before: 修饰器前要有一个空格
++ property-no-unknown: 未知属性

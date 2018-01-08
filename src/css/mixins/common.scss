@@ -158,7 +158,6 @@
 			#{nth($direction, $i)}: nth($direction-val, $i) / $scale;
 		}
 	}
-
 }
 
 @mixin commonBgLinear($angle: to bottom, $start: #fff, $end: #000) {
@@ -178,6 +177,7 @@
 /**
  * 文字相关
  */
+
 /**
  * 一行文字
  */
@@ -221,5 +221,3 @@
 		height: 0;
 	}
 }
-
-

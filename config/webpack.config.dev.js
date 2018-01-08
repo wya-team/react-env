@@ -9,6 +9,7 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const { commonConfig, localIp, localPort } = require('./webpack.config.common');
 
@@ -43,6 +44,12 @@ let webpackConfig = {
 			clearConsole: true,
 			additionalFormatters: [],
 			additionalTransformers: []
+		}),
+		/**
+		 * StyleLint
+		 */
+		new StyleLintPlugin({
+			configFile: path.resolve(__dirname, '../', '.stylelintrc')
 		})
 		/**
 		 * 热更新 同--hot

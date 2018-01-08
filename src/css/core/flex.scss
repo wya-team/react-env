@@ -2,17 +2,17 @@
  * flex
  */
 
-.#{$prefix}-flex{
+.#{$prefix}-flex {
 	display: flex;
 	box-sizing: border-box;
 }
 
 .#{$prefix}-col {
-	flex: 1
+	flex: 1;
 }
 
 .#{$prefix}-col-2 {
-	flex: 2
+	flex: 2;
 }
 
 .#{$prefix}-full {

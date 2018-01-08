@@ -24,11 +24,13 @@ body {
 	border: none;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
+
 	/**
 	 * 字体样式不模糊
 	 */
 	-webkit-font-smoothing: antialiased;
 	font-smoothing: antialiased;
+
 	/**
 	 * 可以复制粘帖
 	 */
@@ -57,7 +59,7 @@ body {
 }
 
 .g-reset .inline {
-	display: inline
+	display: inline;
 }
 
 .g-reset i,
@@ -99,16 +101,15 @@ body {
 	background: $scrollbar-thumb-bg-color;
 }
 
-
 [class*="scroll-wrap-content"] {
 	overflow: auto;
 }
 
-[class*="scroll-container"]  {
+[class*="scroll-container"] {
 	-webkit-overflow-scrolling: touch;
 	overflow-scrolling: touch;
 	overflow: auto;
-	&.__none{
+	&.__none {
 		-webkit-overflow-scrolling: auto;
 		overflow-scrolling: auto;
 	}
