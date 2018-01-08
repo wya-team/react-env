@@ -16,7 +16,9 @@
 		"mocha": true
 	},
 	"plugins": [
-		"react"
+		"react",
+		"markdown",
+		"babel"
 	],
 	"parser": "babel-eslint",
 	"rules":
