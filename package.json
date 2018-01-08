@@ -18,7 +18,7 @@
     "prompt": "node ./config/prompt.config.js",
     "all": "npm-run-all --parallel --race --continue-on-error lint:watch serve",
     "lint-staged": "lint-staged",
-    "postinstall": "cp .hooks/* .git/hooks/"
+	"pre-commit:install": "cp .hooks/* .git/hooks/"
   },
   "author": "wya-team",
   "license": "MIT",
