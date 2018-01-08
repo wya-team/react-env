@@ -17,6 +17,7 @@
     "mock": "cd ./src/mock && npm run start",
     "prompt": "node ./config/prompt.config.js",
     "all": "npm-run-all --parallel --race --continue-on-error lint:watch serve",
+    "lint-staged": "lint-staged",
     "postinstall": "cp .hooks/* .git/hooks/"
   },
   "author": "wya-team",
@@ -64,6 +65,7 @@
     "json-loader": "^0.5.7",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
+    "lint-staged": "^6.0.0",
     "mockjs": "^1.0.1-beta3",
     "node-sass": "^4.5.3",
     "npm-run-all": "^4.1.2",
@@ -71,6 +73,7 @@
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "^2.0.8",
     "postcss-smart-import": "^0.7.5",
+    "pre-commit": "^1.2.2",
     "precss": "^2.0.0",
     "prompt": "^1.0.0",
     "redux-devtools": "^3.4.0",
@@ -85,5 +88,14 @@
     "webpack-bundle-analyzer": "^2.9.1",
     "webpack-dev-server": "^2.9.7",
     "webpack-merge": "^4.1.1"
-  }
+  },
+  "lint-staged": {
+    "{src,config}/**/*.{js,jsx}": [
+      "esw --fix",
+      "git add"
+    ]
+  },
+  "pre-commit": [
+    "lint-staged"
+  ]
 }
