@@ -10,7 +10,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
 
-const { commonConfig, localIp, localPort } = require('./webpack.config.common');
+const { APP_ROOT, commonConfig, localIp, localPort } = require('./webpack.config.common');
 
 let webpackConfig = {
 	plugins: [
@@ -19,7 +19,7 @@ let webpackConfig = {
 		 * 需要屏蔽HtmlWebpackPlugin功能，即注释
 		 */
 		new AssetsPlugin({
-			path: path.resolve(__dirname, '../', 'dist/js/'),
+			path: path.resolve(APP_ROOT, 'dist/js/'),
 			filename: 'webpack-assets.js',
 			processOutput: function(assets) {
 				return 'window.WEBPACK_ASSETS = ' + JSON.stringify(assets);
@@ -29,7 +29,7 @@ let webpackConfig = {
 		 * 压缩同时转移静态文件
 		 */
 		new CopyWebpackPlugin([
-			{ from: path.resolve(__dirname, '../', 'src/static'), to: '[name].[ext]', toType: 'template' },
+			{ from: path.resolve(APP_ROOT, 'src/static'), to: '[name].[ext]', toType: 'template' },
 		]),
 		/**
 		 * 生产环境

@@ -1,6 +1,5 @@
 process.env.NODE_ENV = 'development';
 const path = require('path');
-const node_modules = path.resolve(__dirname, '../', 'node_modules');
 
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
@@ -11,7 +10,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
-const { commonConfig, localIp, localPort } = require('./webpack.config.common');
+const { APP_ROOT, commonConfig, localIp, localPort } = require('./webpack.config.common');
 
 let webpackConfig = {
 	plugins: [
@@ -19,7 +18,7 @@ let webpackConfig = {
 		 * 输出html
 		 */
 		new HtmlWebpackPlugin({
-			template: path.resolve(__dirname, '../', 'src/static/index.tpl.html'),
+			template: path.resolve(APP_ROOT, 'src/static/index.tpl.html'),
 			chunks: ['common', 'main'], // 当前路由所包含的模块，注意common引入方式
 			inject: 'body',
 			filename: './index.html'
@@ -49,7 +48,7 @@ let webpackConfig = {
 		 * StyleLint
 		 */
 		new StyleLintPlugin({
-			configFile: path.resolve(__dirname, '../', '.stylelintrc')
+			configFile: path.resolve(APP_ROOT, '.stylelintrc')
 		})
 		/**
 		 * 热更新 同--hot
