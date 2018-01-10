@@ -1,14 +1,12 @@
 import { DEV_WITH_SERVER } from './constants';
+import __tpl__ from './api/__tpl__';
 import _common from './api/_common';
-import test from './api/test';
 import login from './api/login';
-import home from './api/home';
 
 const API = {
+	...__tpl__,
 	..._common,
-	...test,
 	...login,
-	...home,
 };
 
 

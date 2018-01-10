@@ -55,7 +55,9 @@ class Aside extends Component {
 				// onCollapse={this.handleCollapse}
 				style={{ overflowY: 'auto' }}
 			>
-				<div className="_logo">{user.token}</div>
+				<div 
+					style={{ height: 64, textAlign: 'center', color: 'white' }}
+				>{user.token || 'logo'}</div>
 				{
 					createElement(
 						this.props.component,

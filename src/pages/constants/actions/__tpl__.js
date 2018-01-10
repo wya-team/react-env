@@ -1,0 +1,8 @@
+export const TPL_MAIN_GET = 'TPL_MAIN_GET';
+export const TPL_SECOND_GET = 'TPL_SECOND_GET';
+
+
+
+export const TPL_THIRD_ONE_GET = 'TPL_THIRD_ONE_GET';
+export const TPL_THIRD_TWO_GET = 'TPL_THIRD_TWO_GET';
+export const TPL_THIRD_THREE_GET = 'TPL_THIRD_THREE_GET';

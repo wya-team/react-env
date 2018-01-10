@@ -6,7 +6,7 @@ import * as LoginActions from '@actions/login';
 // 组件
 import Form from '@components/Login/Form';
 import Header from '@components/Login/Header';
-
+import SetTitle from '@components/_common/SetTitle/SetTitle';
 class App extends Component {
 	constructor(props, context) {
 		super(props, context);
@@ -17,10 +17,10 @@ class App extends Component {
 			actions
 		} = this.props;
 		return (
-			<div>
+			<SetTitle title="登录" className="g-flex-cc g-fd-c" style={{ height: `100vh` }}>
 				<Header />
 				<Form actions={actions} />
-			</div>
+			</SetTitle>
 		);
 	}
 }

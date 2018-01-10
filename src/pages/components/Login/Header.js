@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 
 const Header = () => {
 	return (
-		<div className="c-login-bg">
-			<div className="_logo">
-				<span>logi</span>
-				{/* <img src={require('./logo.png')}/>*/}
-			</div>
-			<h1>项目管理后台</h1>
+		<div className="g-flex-cc g-fd-c">
+			<span>logo</span>
+			<h1>无视，随便展示一下, 来试试登录</h1>
 		</div>
 		
 	);

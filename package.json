@@ -1,7 +1,7 @@
 {
-  "name": "react-env-pc",
+  "name": "react-env",
   "version": "0.1.0",
-  "description": "basic env for pc",
+  "description": "basic env for react",
   "main": "index.js",
   "scripts": {
     "start": "npm run dev",

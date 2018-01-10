@@ -1,22 +1,19 @@
 // import { redirectToLogin, redirectToIndex, redirectVerifyBelong } from './auth';
-import Nav from '../components/Nav/Nav';
-import { testConfig } from '../containers/Test/App';
-import { homeConfig } from '../containers/Home/App';
+// import { tplConfig } from '../containers/__tpl__/App';
+// import { tplPCConfig } from '../containers/__tpl__PC__/App';
+import { loginConfig } from '../containers/Login/App';
 
 export const routeConfig = [
-	// 首页
-	...testConfig,
-	// 主站页面
-	{ 
-		path: '/p/',
-		// onEnter: (nextState, replace) => replace('/login'),
-		component: Nav,
-		childRoutes: [
-			// 
-			...homeConfig,
-		]
-
-	},
+	/**
+	 * 模版部分
+	 */
+	// ...tplConfig,
+	// ...tplPCConfig,
+	// -- end --
+	
+	// 登录首页
+	...loginConfig,
+	// ...tplMobileConfig,
 	// 授权回来后给后端发起请求
 	{
 		path: '/auth',
@@ -25,6 +22,6 @@ export const routeConfig = [
 	// error
 	{
 		path: '*',
-		onEnter: (nextState, replace) => replace('/p/home')
+		onEnter: (nextState, replace) => replace('/login')
 	}
 ];
