@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Layout, Menu, Icon, message } from 'antd';
 import Aside from './Aside';
 // redux 
@@ -20,7 +20,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 // decorator
-export default (options = {}) => function createDecorator(WrappedComponent) {
+export default (options = {}) => function createDecorator(LeftNav, TopNav) {
 	class LayoutDecorator extends Component {
 		constructor() {
 			super();
@@ -63,21 +63,35 @@ export default (options = {}) => function createDecorator(WrappedComponent) {
 			return (
 				<div style={{ height: _global.innerHeight }}>
 					<Layout className="ant-layout-has-sider g-ant-layout">
-						<Aside path={pathname} collapsed={collapsed} component={WrappedComponent} actions={actions}/>
+						<Aside path={pathname} collapsed={collapsed} component={LeftNav} actions={actions}/>
 						<Layout className="g-ant-layout" id="contents">
 							<Layout.Header className="g-flex g-bg-white g-ai-c g-pd" style={{ background: "white" }}>
-								<div className="g-col" style={{ marginLeft: -25 }}>
-									<Icon
-										className="trigger"
-										type={collapsed ? 'menu-unfold' : 'menu-fold'}
-										onClick={this.handleToggle}
-									/>
-								</div>
-								<div className="g-tr">
-									<div onClick={this.handleSignOut} className="g-blue g-cp">
-										退出登录
-									</div>
-								</div>
+								{ 
+									TopNav 
+										? (
+											<TopNav 
+												collapsed={collapsed}
+												onToggle={this.handleToggle}
+												onSignOut={this.handleSignOut}
+											/>
+										) 
+										: (
+											<Fragment>
+												<div className="g-col" style={{ marginLeft: -25 }}>
+													<Icon
+														className="trigger"
+														type={collapsed ? 'menu-unfold' : 'menu-fold'}
+														onClick={this.handleToggle}
+													/>
+												</div>
+												<div className="g-tr">
+													<div onClick={this.handleSignOut} className="g-blue g-cp">
+														退出登录
+													</div>
+												</div>
+											</Fragment>
+										)
+								}
 							</Layout.Header>
 							<Layout.Content style={{ margin: '10px 10px 0 10px', overflow: 'initial', height: _global.innerHeight - 64, overflow: "auto" }}>
 								{this.props.children}

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -31,9 +31,9 @@ class Container extends Component {
 	}
 	render() {
 		return (
-			<div>
+			<Fragment>
 				<Header />
-			</div>
+			</Fragment>
 		);
 	}
 }

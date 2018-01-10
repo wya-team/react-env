@@ -1,9 +1,9 @@
 // import { redirectUserToLogin, redirectUserToHome } from '../../router/auth';
-import Nav from './Modules/Nav/Nav';
+import Layout from './Modules/Layout/Layout';
 export const tplPCConfig = [
 	{
 		path: '/tpl-pc',
-		component: Nav,
+		component: Layout,
 		childRoutes: [
 			{
 				path: 'main',

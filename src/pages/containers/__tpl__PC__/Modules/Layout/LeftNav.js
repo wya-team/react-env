@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Menu, Icon } from 'antd';
 import { Link } from 'react-router';
-import createLayout from '@components/Layout/Layout';
-@createLayout({ path: "tpl-pc", footer: false })
 class Nav extends Component {
 	constructor(props){
 		super(props);
