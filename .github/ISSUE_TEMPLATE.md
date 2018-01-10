@@ -4,10 +4,10 @@
 
 在提交`issue`之前，请阅读并遵循以下说明:
 
-- 仔细阅读我们文档，特别是 [README](https://github.com/wya-team/wya-en-pc/blob/master/README.md). 它可能包含帮助你解决问题的信息.
-- 确保你的问题还没有解决 [reported](https://github.com/wya-team/wya-en-pc/issues?utf8=%E2%9C%93&q=is%3Aissue)；
-- 如果您不确定这个问题是由`wya-en-pc`引起的，或者您只是需要帮助，可以使用 [Email](zrd@weiyian.com)；
-- 如果您报告一个错误，请确保它没有在最新的`wya-en-pc`版本中修复.
+- 仔细阅读我们文档，特别是 [README](https://github.com/wya-team/react-env/blob/master/README.md). 它可能包含帮助你解决问题的信息.
+- 确保你的问题还没有解决 [reported](https://github.com/wya-team/react-env/issues?utf8=%E2%9C%93&q=is%3Aissue)；
+- 如果您不确定这个问题是由`react-env`引起的，或者您只是需要帮助，可以使用 [Email](zrd@weiyian.com)；
+- 如果您报告一个错误，请确保它没有在最新的`react-env`版本中修复.
 
 *^^^ 在提交`issue`之前删除以上`内容` ^^^*
 
@@ -21,5 +21,5 @@
 
 #### 其他
 
-- `wya-en-pc` version: *e.g.: v0.16.0*
+- `react-env` version: *e.g.: v0.16.0*
 - 环境: *e.g.: node v6.9.4, chrome 54, windows 7*

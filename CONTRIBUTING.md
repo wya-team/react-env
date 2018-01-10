@@ -1,6 +1,6 @@
 # 贡献指南
 
-这篇指南会指导你如何为 `wya-en-pc` 贡献一份自己的力量，请在你要提 `issue` 或者 `pull request` 之前花几分钟来阅读一遍这篇指南。
+这篇指南会指导你如何为 `react-env` 贡献一份自己的力量，请在你要提 `issue` 或者 `pull request` 之前花几分钟来阅读一遍这篇指南。
 
 ## 行为准则
 
@@ -16,9 +16,9 @@
 
 ## Bugs
 
-我们使用 [`GitHub Issues`](https://github.com/wya-team/wya-en-pc/issues) 来做 `bug` 追踪。
+我们使用 [`GitHub Issues`](https://github.com/wya-team/react-env/issues) 来做 `bug` 追踪。
 
-在你报告一个 `bug` 之前，请先确保已经搜索过已有的 `issue` 和阅读了我们的 [常见问题](https://github.com/wya-team/wya-en-pc/wiki/FAQ)。
+在你报告一个 `bug` 之前，请先确保已经搜索过已有的 `issue` 和阅读了我们的 [常见问题](https://github.com/wya-team/react-env/wiki/FAQ)。
 
 ## 新增功能
 
@@ -52,10 +52,10 @@
 
 ## 开发流程
 
-在你 `clone` 了 `wya-en-pc`  的代码并且使用 `npm install` 安装完依赖后，你还可以运行下面几个常用的命令：
+在你 `clone` 了 `react-env`  的代码并且使用 `npm install` 安装完依赖后，你还可以运行下面几个常用的命令：
 
-1. `npm start` 或者 `npm run dev` 在本地运行 `wya-en-pc`。
+1. `npm start` 或者 `npm run dev` 在本地运行 `react-env`。
 2. `npm run lint` / `npm run lint:fix` / `npm run lint:watch` 检查代码风格/修复/监听。
-3. `npm run build:dev` / `npm run build` 构建 `wya-en-pc` 到 `dist` 目录。
+3. `npm run build:dev` / `npm run build` 构建 `react-env` 到 `dist` 目录。
 4. `npm run mock` 运行数据模拟。
 5. `npm test` 运行测试。
