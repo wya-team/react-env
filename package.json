@@ -40,7 +40,9 @@
     "react-router-redux": "^4.0.8",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "wya-sass": "^0.1.3",
+    "wya-fetch": "^0.1.1",
+    "wya-rc": "^0.1.1",
+    "wya-sass": "^0.1.5",
     "wya-utils": "^0.1.3"
   },
   "devDependencies": {
