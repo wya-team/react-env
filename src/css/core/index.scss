@@ -1,8 +1,18 @@
 @import "../themes/default";
 @import "../mixins/common";
-@import "reset";
-@import "global";
-@import "flex";
-@import "layout";
 @import "../mixins/animate";
-@import "animates";
+// 库中的样式
+@import "~wya-sass/lib/core/reset.scss";
+@import "~wya-sass/lib/core/global.scss";
+@import "~wya-sass/lib/core/flex.scss";
+@import "~wya-sass/lib/core/layout.scss";
+@import "~wya-sass/lib/core/animates.scss";
+
+// pc
+// @import "~wya-sass/lib/core/pc.scss";
+
+// mobile
+// @import "~wya-sass/lib/core/mobile.scss";
+
+// 基于业务涉及的样式
+@import "reset.scss";
