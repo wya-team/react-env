@@ -1,14 +1,14 @@
 // import { redirectToLogin, redirectToIndex, redirectVerifyBelong } from './auth';
-import { tplConfig } from '../containers/__tpl__/App';
-import { tplPCConfig } from '../containers/__tpl__PC__/App';
+// import { tplConfig } from '../containers/__tpl__/App';
+// import { tplPCConfig } from '../containers/__tpl__PC__/App';
 import { loginConfig } from '../containers/Login/App';
 
 export const routeConfig = [
 	/**
 	 * 模版部分
 	 */
-	...tplConfig,
-	...tplPCConfig,
+	// ...tplConfig,
+	// ...tplPCConfig,
 	// -- end --
 	
 	// 登录首页

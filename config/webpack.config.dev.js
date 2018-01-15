@@ -47,9 +47,9 @@ let webpackConfig = {
 		/**
 		 * StyleLint
 		 */
-		new StyleLintPlugin({
-			configFile: path.resolve(APP_ROOT, '.stylelintrc')
-		})
+		// new StyleLintPlugin({
+		// 	configFile: path.resolve(APP_ROOT, '.stylelintrc')
+		// })
 		/**
 		 * 热更新 同--hot
 		 */

@@ -4,22 +4,23 @@
  * @param  {[type]} method  请求类型
  * @param  {[type]} body    请求的参数
  * @param  {Object} options 扩展
- * 
+ *
  */
 import { ajaxFn } from 'wya-fetch';
-const loadingFn = () => {
-
+const loadingFn = (msg) => {
 };
 const loadedFn = () => {
+};
+const setCb = () => {
 
 };
-const othersCb = () => {
+const otherCb = () => {
 
 };
 const opts = {
-	
+
 };
-const ajax = ajaxFn(loadingFn, loadedFn, othersCb, opts);
+const ajax = ajaxFn(loadingFn, loadedFn, setCb, otherCb, opts);
 let net = {
 	ajax
 };
