@@ -9,4 +9,4 @@ export const DEBUG = !0;
  * true开启，false关闭
  * 即!0后端。!1前端:3000端口
  */
-export const DEV_WITH_PHP = !0;
+export const DEV_WITH_SERVER = !0;
