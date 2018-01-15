@@ -28,7 +28,7 @@ let webpackConfig = {
 		 */
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify('development'),
-			__DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
+			__DEV__: 'true'
 		}),
 		/**
 		 * 友好提示
