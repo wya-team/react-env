@@ -59,6 +59,7 @@ export const initItem = (res, str, count, initObj, initArr) => {
 };
 /**
  * 作为分页初始数据
+ * for mobile
  */
 export const initObj = {
 	currentPage: 0, // 当前页数
@@ -68,7 +69,18 @@ export const initObj = {
 	itemObj: {},
 
 };
-
+/**
+ * 作为分页初始数据
+ * for pc
+ */
+export const initPage = {
+	curPage: 0, // 当前页数
+	totalPage: 1, // 总页数
+	pageSize: 10, // 条数
+	isEnd: 0, // 是否正在加载 0 上拉加载，1为加载中，2为已全部加载,3数据异常
+	itemArr: [],
+	itemObj: {},
+};
 /**
  * 对自定义链接做处理
  */

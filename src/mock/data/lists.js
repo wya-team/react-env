@@ -1,13 +1,13 @@
-let Mock  = require('mockjs');
+let Mock = require('mockjs');
 let Random = Mock.Random;
 let items = [];
 for (let i = 1; i <= 30; i++) {
 	items.push({
 		id: i,
 		title: Random.cword(8, 20),
-		img_count:Random.natural(60, 100),
-		img:Random.image(),
-		time:Random.datetime('yyyy-MM-dd A HH:mm:ss')
+		img_count: Random.natural(60, 100),
+		img: Random.image(),
+		time: Random.datetime('yyyy-MM-dd A HH:mm:ss')
 	});
 }
 

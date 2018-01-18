@@ -51,6 +51,14 @@ export const tplPCConfig = [
 				]
 			},
 			{
+				path: 'table',
+				getComponent: (nextState, cb) => {
+					require.ensure([], (require) => {
+						cb(null, require('./Modules/TplTable').default);
+					});
+				}
+			},
+			{
 				path: '*',
 				onEnter: (nextState, replace) => replace('/tpl/main')
 			}

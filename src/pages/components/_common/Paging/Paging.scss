@@ -1,0 +1,56 @@
+.c-paging {
+	position: relative;
+	padding: 20px;
+	border-radius: 4px;
+	// &.__defalut {
+	// 	thead {
+	// 		background: #eee;
+	// 		border-bottom: 1px solid #ccc;
+	// 		font-size: 14px;
+	// 		tr {
+	// 			th {
+	// 				padding: 5px;
+	// 				border-bottom: 1px solid #ccc;
+	// 				&:last-child {
+	// 					width: 15%;
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// 	tbody {
+	// 		tr {
+	// 			td {
+	// 				height: 135px;
+	// 				padding: 10px;
+	// 				border-bottom: 1px solid #ccc;
+	// 				&:first-child {
+	// 					color: red;
+	// 				}
+	// 				button {
+	// 					width: 100px;
+	// 					margin: 5px 10px;
+	// 				}
+	// 				img {
+	// 					width: 100%;
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
+	.__conent {
+		width: 100%;
+		min-height: 300px;
+		overflow: hidden;
+	}
+	.__table {
+		width: 100%;
+		text-align: center;
+		border-spacing: 0;
+	}
+	.ant-spin,
+	.__error {
+		position: absolute;
+		left: 45%;
+		top: 45%;
+	}
+}
