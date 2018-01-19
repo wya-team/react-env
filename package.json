@@ -112,6 +112,10 @@
     "*.md": [
       "esw --ext '.md' --fix",
       "git add"
+    ],
+    "*.scss": [
+      "stylelint --fix --syntax scss",
+      "git add"
     ]
   },
   "pre-commit": [
