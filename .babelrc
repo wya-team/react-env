@@ -21,7 +21,7 @@
 				},
 				{
 					"libraryName": "wya-rc",
-					"libraryDirectory": "src/web"
+					"libraryDirectory": "lib/web"
 				}
 			]
 		]
