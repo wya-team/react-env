@@ -8,7 +8,10 @@ module.exports = function() {
 	res.details = require('./data/details');
 
 	for (let i in res) {
-		res[i] = Object.assign({}, {status: 1, data: res[i]});
+		res[i] = Object.assign({}, {
+			status: 1,
+			data: res[i]
+		});
 	}
 	return res;
 };
