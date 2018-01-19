@@ -1,0 +1,223 @@
+/**
+ * layout 定义全局样式
+ */
+
+/**
+ *  定义栅格布局 12等分
+ *  return g-w-value, g-fw-value 浮动
+ */
+
+
+@include globalLayout($total);
+
+/**
+ *  定义全局需要的 color(lists)
+ *  (name:名称, value:值)
+ *  return g-c-pink
+ */
+@include globalColor($color-list);
+
+/**
+ *  定义全局需要的 bgColor
+ *  (name:名称, value:值, color:字体颜色，默认白色)
+ *  return g-bg-pink
+ */
+@include globalBgColor($bg-color-list);
+
+/**
+ *  定义全局需要的 bgLineColor
+ *  (name:名称, value:值, color:字体颜色，默认白色)
+ *  return g-bg-lg-pink
+ */
+@include globalBgLineColor($bg-line-color-list);
+
+/**
+ *  定义全局需要的font-size(lists)
+ *  return g-fs-12
+ */
+@include globalFontSize($font-size-list);
+
+/**
+ *  定义全局需要的line-height(lists)
+ *  return g-lh-44
+ */
+@include globalLineHeight($line-height-list);
+
+/**
+ *  定义全局需要的padding(lists)
+ *  > string(定义方向 t(top), b(bottom), l(left), r(right))
+ *  , list(定义该方向要用的数值，可以是number，或者是maps(名称:值))
+ *  return g-pd-15 / g-pd-sm / g-pd-tb-10
+ */
+@include globalPadding($padding-list);
+
+/**
+ *  定义全局需要的margin(lists)
+ *  > string(定义方向 t(top), b(bottom), l(left), r(right))
+ *  , list(定义该方向要用的数值，可以是number，或者是maps(名称:值))
+ *  return g-m-15 / g-m-tb-10em
+ */
+@include globalMargin($margin-list);
+
+/**
+ *  定义全局需要的img大小(lists)
+ *  return g-img-60
+ */
+@include globalImgSize($img-size-list);
+
+.#{$prefix}-br-circle {
+	border-radius: 100%;
+}
+.#{$prefix}-br-sem {
+	border-radius: $default-border-radius / $scale;
+}
+
+.#{$prefix}-bb {
+	@include commonBorder(b);
+}
+
+.#{$prefix}-br {
+	@include commonBorder(r);
+}
+
+.#{$prefix}-bl {
+	@include commonBorder(l);
+}
+
+.#{$prefix}-bt {
+	@include commonBorder(t);
+}
+
+.#{$prefix}-bs {
+	box-shadow: $default-border-shadow;
+}
+
+.#{$prefix}-tc {
+	text-align: center;
+}
+
+.#{$prefix}-tl {
+	text-align: left;
+}
+
+.#{$prefix}-tr {
+	text-align: right;
+}
+
+.#{$prefix}-td-lh {
+	text-decoration: line-through;
+}
+
+.#{$prefix}-td-ul {
+	text-decoration: underline;
+}
+
+.#{$prefix}-nowrap {
+	white-space: nowrap;
+}
+
+.#{$prefix}-nobreak {
+	@include commonNoBreak;
+}
+
+
+.#{$prefix}-fixed {
+	position: fixed !important;
+}
+.#{$prefix}-relative {
+	position: relative!important;
+}
+
+.#{$prefix}-absolute {
+	position: absolute!important;
+}
+
+
+.#{$prefix}-clearfix:before,
+.#{$prefix}-clearfix:after,
+.#{$prefix}-row:before,
+.#{$prefix}-row:after {
+	display: table;
+	content: " ";
+}
+.#{$prefix}-clearfix:after,
+.#{$prefix}-row:after {
+	clear: both;
+}
+.#{$prefix}-row {
+	margin: 0;
+	padding: 0;
+}
+.#{$prefix}-fr {
+	float: right;
+}
+.#{$prefix}-fl {
+	float: left;
+}
+
+
+.#{$prefix}-h-full {
+	height: 100vh
+}
+
+/**
+ * 禁用事件
+ */
+.#{$prefix}-disabled {
+	pointer-events: none;
+}
+
+/**
+ * 禁用动画
+ */
+.#{$prefix}-noanimate {
+	animation: 0 !important;
+	-webkit-animation: 0 !important;
+}
+
+/**
+ * 一行文字
+ */
+.#{$prefix}-oneline {
+	@include commonTextLine(1);
+}
+
+/**
+ * 两行文字
+ */
+.#{$prefix}-twoline {
+	@include commonTextLine(2);
+}
+
+/**
+ * 两行文字 限高
+ */
+.#{$prefix}-two-lh {
+	height: $line-height-limit * 2 / $scale;
+	line-height: $line-height-limit * 2 / $scale;
+}
+
+/**
+ * 一行文字 限高
+ */
+.#{$prefix}-one-lh {
+	height: $line-height-limit / $scale;
+	line-height: $line-height-limit / $scale;
+}
+
+.#{$prefix}-hide {
+	display: hidden;
+}
+.#{$prefix}-show {
+	display: block;
+}
+.#{$prefix}-inline {
+	display: inline;
+}
+.#{$prefix}-linebk {
+	display: inline-block;
+}
+
+.#{$prefix}-pointer {
+	cursor: pointer;
+}

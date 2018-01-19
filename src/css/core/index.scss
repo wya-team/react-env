@@ -1,8 +1,13 @@
-@import "../themes/default";
-@import "../mixins/common";
-@import "reset";
-@import "global";
-@import "flex";
-@import "layout";
-@import "../mixins/animate";
-@import "animates";
+// 声明变量
+@import "../themes/index";
+
+// 定义方法
+@import "../mixins/index";
+
+
+// 基础样式
+@import "basic/index";
+
+// 全部样式
+@import "mobile/index";
+@import "pc/index";

@@ -4,22 +4,26 @@
  * @param  {[number]} $length:    50%           [高度或宽度]
  * @return {[type]}             [description]
  */
+
 @mixin animateSlide($direction: down, $length: 50%) {
 	z-index: $popup-zindex;
 	background: $popup-bg-color;
-	@if ($direction == 'down') {
+	@if ($direction=='down') {
 		width: 100%;
 		height: $length;
 		@include commonAbsolute(null, 0, 0, 0);
-	} @else if ($direction == 'up') {
+	}
+	@else if ($direction=='up') {
 		width: 100%;
 		height: $length;
 		@include commonAbsolute(0, 0, null, 0);
-	} @else if ($direction == 'left') {
+	}
+	@else if ($direction=='left') {
 		height: 100%;
 		width: $length;
 		@include commonAbsolute(0, null, 0, 0);
-	} @else if ($direction == 'right') {
+	}
+	@else if ($direction=='right') {
 		height: 100%;
 		width: $length;
 		@include commonAbsolute(0, 0, 0, null);
@@ -29,75 +33,28 @@
 	animation-timing-function: $popup-timing;
 }
 
-/**
- * [$direction 方向]
- * @type {[string]}
- */
-$direction: down, up, left, right;
-@each $key in $direction {
-	@keyframes animate-slide-#{$key} {
-		$start: 0, 100%;
-		@if ($key == 'down') {
-			$start: 0, 100%;
-		} @else if ($key == 'up') {
-			$start: 0, -100%;
-		} @else if ($key == 'left') {
-			$start: -100%, 0;
-		} @else if ($key == 'right') {
-			$start: 100%, 0;
-		}
-		0% {
-			transform: translate(#{$start});
-		}
-		100% {
-			transform: translate(0, 0);
-		}
-	}
-}
 
-@keyframes animate-fadeIn {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-}
 
-@keyframes animate-fadeOut {
+@mixin animateFade($start, $end) {
 	0% {
-		opacity: 1;
+		opacity: $start;
 	}
 
 	100% {
-		opacity: 0;
+		opacity: $end;
 	}
 }
 
-@keyframes animate-zoomIn {
+@mixin animateZoom($start, $end) {
 	0% {
-		opacity: 0;
+		opacity: $start;
 		transform-origin: 50% 50%;
 		transform: scale(0, 0);
 	}
 
 	100% {
-		opacity: 1;
+		opacity: $end;
 		transform-origin: 50% 50%;
 		transform: scale(1, 1);
-	}
-}
-
-@keyframes animate-zoomOut {
-	0% {
-		opacity: 1;
-		transform-origin: 50% 50%;
-		transform: scale(1, 1);
-	}
-
-	100% {
-		opacity: 0;
-		transform-origin: 50% 50%;
-		transform: scale(0, 0);
 	}
 }

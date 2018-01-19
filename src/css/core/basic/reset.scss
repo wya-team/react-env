@@ -12,10 +12,6 @@ body {
 	background-color: $body-bg-color;
 }
 
-#pages {
-	overflow: auto;
-}
-
 *,
 *:before,
 *:after {
@@ -59,7 +55,7 @@ body {
 }
 
 .g-reset .inline {
-	display: inline;
+	display: inline
 }
 
 .g-reset i,
@@ -69,6 +65,14 @@ body {
 	font-weight: normal;
 	font-style: normal;
 	display: inline-block;
+}
+.g-reset button {
+	outline-style: none;
+}
+.g-reset input, 
+.g-reset textarea,
+{
+	outline: none; 
 }
 
 /**
@@ -101,15 +105,16 @@ body {
 	background: $scrollbar-thumb-bg-color;
 }
 
+#pages,
 [class*="scroll-wrap-content"] {
 	overflow: auto;
 }
 
-[class*="scroll-container"] {
+[class*="scroll-container"]  {
 	-webkit-overflow-scrolling: touch;
 	overflow-scrolling: touch;
 	overflow: auto;
-	&.__none {
+	&.__none{
 		-webkit-overflow-scrolling: auto;
 		overflow-scrolling: auto;
 	}

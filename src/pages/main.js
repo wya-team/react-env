@@ -1,4 +1,4 @@
-import '../css/global.scss';
+import '../css/index.scss';
 if ("production" !== process.env.NODE_ENV) {
 	module.exports = require('./router/Router.dev');
 } else {

@@ -1,31 +1,12 @@
-/**
- * 表单
- */
+// form
+$mobile-form-bg-color: #fff;
+$mobile-form-label-width: 160px;
+$mobile-form-font-color: #666;
+$mobile-form-btn-bg-color: $orange_1;
+$mobile-form-btn-color: #fff;
+$mobile-form-item-margin: 20px;
+$mobile-form-line-height: 80px;
 
-.g-form {
-	width: 100%;
-	background: $form-bg-color;
-	.__item {
-		display: flex;
-		align-items: center;
-		margin: 0 #{$form-item-margin / $scale};
-		line-height: #{$form-line-height / $scale};
-		@include commonBorder(b);
-		&:last-child {
-			border-bottom: none;
-		}
-		input {
-			flex: 1;
-			color: $form-font-color;
-		}
-		label {
-			flex: 0 0 #{$form-label-width / $scale};
-		}
-	}
-	.__none {
-		margin: 0;
-	}
-	button {
-		@include btnLargeBase($form-btn-bg-color, $form-btn-color);
-	}
+.#{$prefix}m-form {
+	@include mobileFormBase;
 }

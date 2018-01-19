@@ -18,6 +18,10 @@
                 { 
                     "libraryName": "antd-mobile",
                     "style": true
+                },
+                {
+                    "libraryName": "wya-rc",
+                    "libraryDirectory": "lib/web"
                 }
             ]
         ]

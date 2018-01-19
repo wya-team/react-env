@@ -2,17 +2,17 @@
  * flex
  */
 
-.#{$prefix}-flex {
+.#{$prefix}-flex{
 	display: flex;
 	box-sizing: border-box;
 }
 
 .#{$prefix}-col {
-	flex: 1;
+	flex: 1
 }
 
 .#{$prefix}-col-2 {
-	flex: 2;
+	flex: 2
 }
 
 .#{$prefix}-full {
@@ -49,12 +49,10 @@
 	box-sizing: border-box;
 	align-items: center;
 }
-.#{$prefix}-flex-grid-3 {
-	@include globalGrid();
-}
-
-.#{$prefix}-flex-grid-4 {
-	@include globalGrid(4);
+@for $i from 1 through length($grid-list) {
+	.#{$prefix}-flex-grid-#{nth($grid-list, $i)} {
+		@include globalGrid(nth($grid-list, $i));
+	}
 }
 @include globalFlex(flex-direction, row, column, row-reverse, column-reverse);
 @include globalFlex(flex-wrap, wrap, wrap-reverse, nowrap);

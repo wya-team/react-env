@@ -1,0 +1,16 @@
+//table
+$pc-table-bar: #f0f2f7;
+$pc-table-border: #cdcdcd;
+$pc-table-bar: #f0f2f7;
+$pc-table-font-size: 14px;
+$pc-table-tr-height: 40px;
+$pc-table-line-height: 22px;
+$pc-table-hover: #cdcdcd;
+
+.#{$prefix}p-table {
+	@include pcTableBase();
+	&.__no-padding{
+		padding: 0;
+	}
+}
+
