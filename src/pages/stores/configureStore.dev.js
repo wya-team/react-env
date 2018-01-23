@@ -18,11 +18,19 @@ function getDebugSessionKey() {
 
 let finalCreateStore = null;
 if (DEBUG) {
-	finalCreateStore = compose(
-		applyMiddleware(thunk, api, reduxRouterMiddleware),
-		DevTools.instrument(),
-		persistState(getDebugSessionKey())
-	)(createStore);
+	const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+	if (composeEnhancers) {
+		finalCreateStore = composeEnhancers(
+			applyMiddleware(thunk, api, reduxRouterMiddleware),
+			persistState(getDebugSessionKey())
+		)(createStore);
+	} else  {
+		finalCreateStore = compose(
+			applyMiddleware(thunk, api, reduxRouterMiddleware),
+			DevTools.instrument(),
+			persistState(getDebugSessionKey())
+		)(createStore);
+	}
 } else {
 	finalCreateStore = compose(
 		applyMiddleware(thunk, api, reduxRouterMiddleware)
