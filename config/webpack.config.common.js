@@ -46,10 +46,12 @@ const webpackConfig = {
 			// 依赖
 			'react': path.resolve(APP_ROOT, 'node_modules/react/cjs/react.production.min.js'),
 			'react-router': path.resolve(APP_ROOT, 'node_modules/react-router/umd/ReactRouter.min.js'),
+			'react-dom/server': path.resolve(APP_ROOT, 'node_modules/react-dom/server'),
 			'react-dom': path.resolve(APP_ROOT, 'node_modules/react-dom/cjs/react-dom.production.min.js'),
 			'react-redux': path.resolve(APP_ROOT, 'node_modules/react-redux/dist/react-redux.min.js'),
 			'react-router-redux': path.resolve(APP_ROOT, 'node_modules/react-router-redux/dist/ReactRouterRedux.min.js'),
 			'redux-thunk': path.resolve(APP_ROOT, 'node_modules/redux-thunk/dist/redux-thunk.min.js'),
+			'rc-form/lib': path.resolve(APP_ROOT, 'node_modules/rc-form/lib'),
 			'rc-form': path.resolve(APP_ROOT, 'node_modules/rc-form/dist/rc-form.min.js'),
 			'redux': path.resolve(APP_ROOT, 'node_modules/redux/dist/redux.min.js'),
 			'immutable': path.resolve(APP_ROOT, 'node_modules/immutable/dist/immutable.min.js'),
