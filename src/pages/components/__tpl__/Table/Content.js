@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Pagination } from 'antd';
 import * as types from '@constants/actions/__tpl__';
-import Paging from '../../_common/Paging/Paging';
-import List from './List';
-import Btn from './Btn';
+import { Paging } from 'wya-rc';
+import Item from './Item';
 
 const title = [
 	'选择',
@@ -15,8 +14,8 @@ const title = [
 	'操作'
 ];
 class Content extends Component {
-	constructor(props) {
-		super(props);
+	constructor(...params) {
+		super(...params);
 		this.loadDataForPaging = this.loadDataForPaging.bind(this); // 加载数据
 	}
 	loadDataForPaging(page) {
@@ -42,30 +41,35 @@ class Content extends Component {
 	}
 	render() {
 		const { listInfo, actions, resetPage, keyword } = this.props;
-		const { isEnd, curPage, totalPage, itemArr, itemObj, selectArr } = listInfo;
+		const { isEnd, curPage, totalPage, itemArr, itemObj } = listInfo;
+
+		const rowSelection = {
+			
+		};
 		return (
 			<Paging 
 				title={title}
 				isEnd={isEnd}
 				curPage={curPage}
 				totalPage={totalPage}
+				dataSource={{ itemArr, itemObj }}
+				actions={actions}
+				keyword={keyword}
 				loadDataForPaging={this.loadDataForPaging}
-
 				resetPrvScrollTop={curPage}
-				resetPage = {resetPage}
-			>
-				<List 
-					itemArr={itemArr[curPage] || []}
-					itemObj={itemObj}
-					selectArr={selectArr}
-					actions={actions}
-					keyword={keyword}
-				/>
-				<Btn
-					selectArr={selectArr}
-					actions={actions}
-				/>
-			</Paging>
+				resetPage={resetPage}
+				// renderRow={Item}
+				renderRow={(props) => <Item {...props}/>}
+
+				// 多选框
+				rowSelection={{
+					getCheckboxProps: (record) => ({
+						disabled: record.id === 1,
+						checked: record.id === 1,
+					}),
+					onChange: (selectedRowKeys, selectedRows) => { console.log(selectedRowKeys, selectedRows); }
+				}}
+			/>
 		);
 	}
 }

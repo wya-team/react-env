@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Button, message, Input } from 'antd';
+import { Modal, Button, message, Input, Checkbox } from 'antd';
 import * as types from '@constants/actions/__tpl__';
 // 置顶
 // 类目名称
@@ -12,16 +12,12 @@ import * as types from '@constants/actions/__tpl__';
 const keywordStyle = { color: "red", fontWeight: 'normal' };
 
 class Item extends Component {
-	constructor(props) {
-		super(props);
-		this.handleDel = ::this.handleDel;
-		this.handleEdit = ::this.handleEdit;
-		this.handlePut = ::this.handlePut;
-		this.handleSelect = ::this.handleSelect;
+	constructor(...params) {
+		super(...params);
 	}
 	componentWillMount() {}
 	
-	handleDel(){
+	handleDel = () => {
 		Modal.confirm({
 			title: '你确定要删除这些内容么?',
 			content: '',
@@ -45,7 +41,7 @@ class Item extends Component {
 			},
 		});
 	}
-	handleEdit(){
+	handleEdit = () => {
 		Modal.confirm({
 			title: '你确定要编辑这些内容么?',
 			content: '',
@@ -69,7 +65,7 @@ class Item extends Component {
 			},
 		});
 	}
-	handlePut(){
+	handlePut = () => {
 		Modal.confirm({
 			title: '你确定要更新这些内容么?',
 			content: '',
@@ -92,23 +88,20 @@ class Item extends Component {
 			},
 		});
 	}
-	handleSelect() {
-		const { itemData } = this.props;
-		const { id } = itemData;
-		this.props.actions.itemSelect(id);
-	}
 	render() {
-		const { itemData = {}, actions, keyword, selectArr = [] } = this.props;
+		const { itemData = {}, actions, keyword, selectArr = [], rowSelection } = this.props;
 		const { id } = itemData;
 		return (
 			<tr>
-				<td>
-					<input 
-						type="checkbox" 
-						checked = {selectArr.includes(id)}
-						onChange = {this.handleSelect}
-					/>
-				</td>
+				{rowSelection &&
+					<td>
+						<Checkbox
+							disabled={rowSelection.disabled}
+							checked={rowSelection.checked}
+							onChange={rowSelection.onChange}
+						/>
+					</td>
+				}
 				<td>2</td>
 				<td>3</td>
 				<td>4</td>

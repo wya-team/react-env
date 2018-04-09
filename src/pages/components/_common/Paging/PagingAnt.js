@@ -11,8 +11,8 @@ class CreatePaging extends Component {
 		})
 	}
 
-	constructor(props) {
-		super(props);
+	constructor(...params) {
+		super(...params);
 		this.wrapper = props.wrapper || '#contents';
 		this.handleChange = ::this.handleChange;
 		this.firstReq = ::this.firstReq;

@@ -4,8 +4,8 @@ import * as types from '@constants/actions/__tpl__';
 import { getHashUrl } from '@utils/utils';
 
 class Filter extends Component {
-	constructor(props) {
-		super(props);
+	constructor(...params) {
+		super(...params);
 		this.handleSearch = ::this.handleSearch;
 	}
 	handleSearch (event) {
