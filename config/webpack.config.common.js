@@ -81,7 +81,8 @@ const webpackConfig = {
 			'redux-thunk',
 			'classnames',
 			'immutable',
-			'pure-render-decorator'
+			'pure-render-decorator',
+			'lodash'
 		],
 		main: path.resolve(APP_ROOT, 'src/pages/main.js') 
 
