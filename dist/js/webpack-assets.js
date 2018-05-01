@@ -1,1 +1,1 @@
-window.WEBPACK_ASSETS = {"main":{"js":"./js/main.1735e57f.bundle.js"},"common":{"js":"./js/common.1735e57f.bundle.js"}}
+window.WEBPACK_ASSETS = {"commons":{"js":"/js/commons.7f1afa8a.chunk.js","css":"/css/initial.commons.7f1afa8a.css"},"main":{"js":"/js/main.7f1afa8a.bundle.js","css":"/css/initial.main.7f1afa8a.css"}}
