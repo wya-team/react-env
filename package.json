@@ -45,11 +45,11 @@
     "react-router-redux": "^4.0.8",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "wya-fetch": "^0.1.14",
+    "wya-fetch": "^0.1.15",
     "wya-qrcode": "^0.1.1",
-    "wya-rc": "^0.3.0",
-    "wya-sass": "^0.1.11",
-    "wya-utils": "^0.1.5"
+    "wya-rc": "^0.3.9",
+    "wya-sass": "^0.2.2",
+    "wya-utils": "^0.1.6"
   },
   "devDependencies": {
     "assets-webpack-plugin": "^3.5.1",
