@@ -4,4 +4,3 @@ if ("production" !== process.env.NODE_ENV) {
 } else {
 	module.exports = require('./router/Router.dist');
 }
-
