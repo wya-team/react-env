@@ -13,6 +13,7 @@ const AssetsPlugin = require('assets-webpack-plugin');
 const { APP_ROOT, commonConfig, localIp, localPort } = require('./webpack.config.common');
 
 let webpackConfig = {
+	mode: "production",
 	plugins: [
 		/**
 		 * 这里不用dev模式下的输出html，改用js输出是为了版本控制；index.html会造成缓存，导致即使js带hash无效（微信端是这样）
@@ -33,24 +34,11 @@ let webpackConfig = {
 		]),
 		/**
 		 * 生产环境
+		 * webpack 4 默认支持: 'process.env.NODE_ENV': JSON.stringify('production')
 		 */
 		new webpack.DefinePlugin({
-			'process.env.NODE_ENV': JSON.stringify('production'),
 			__DEV__: 'false'
 		}),
-		/**
-		 * 优化
-		 * webPack 提供了内建插件，直接配置以下代码即可压缩代码.同 -p
-		 */
-		// new webpack.optimize.UglifyJsPlugin({
-		// 	output: {
-		// 		comments: false, // remove all comments（没有注释）
-		// 	},
-		// 	compress: {
-		// 		warnings: false
-		// 	},
-		// 	// warningsFilter: (src) => true
-		// }),
 		new BundleAnalyzerPlugin({
 			analyzerMode: 'static', // static 生成html文件 | server 一直监听 | disabled 生成json文件
 			// analyzerHost: localIp,
@@ -63,10 +51,6 @@ let webpackConfig = {
 			// statsOptions: null,
 			logLevel: 'info'
 		}),
-		/**
-		 * webpack3.x 模块串联
-		 */
-		new webpack.optimize.ModuleConcatenationPlugin()
 	],
 };
 

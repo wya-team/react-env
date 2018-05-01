@@ -13,6 +13,7 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 const { APP_ROOT, commonConfig, localIp, localPort } = require('./webpack.config.common');
 
 let webpackConfig = {
+	mode: 'development',
 	plugins: [
 		/**
 		 * 输出html
@@ -25,9 +26,9 @@ let webpackConfig = {
 		}),
 		/**
 		 * 开发环境
+		 * webpack 4 默认支持: 'process.env.NODE_ENV': JSON.stringify('development')
 		 */
 		new webpack.DefinePlugin({
-			'process.env.NODE_ENV': JSON.stringify('development'),
 			__DEV__: 'true'
 		}),
 		/**
@@ -50,10 +51,6 @@ let webpackConfig = {
 		// new StyleLintPlugin({
 		// 	configFile: path.resolve(APP_ROOT, '.stylelintrc')
 		// })
-		/**
-		 * 热更新 同--hot
-		 */
-		// new webpack.HotModuleReplacementPlugin()
 	]
 };
 

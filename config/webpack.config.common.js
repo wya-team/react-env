@@ -38,21 +38,25 @@ const postcssLoader = {
 	}
 };
 const webpackConfig = {
+	target: "web", // <=== 默认是 'web'，可省略
 	resolve: {// 重定向路径
 		mainFiles: ['index.web', 'index'],
 		modules: [path.resolve(APP_ROOT, 'src'), 'node_modules'],
 		extensions: ['.web.tsx', '.web.ts', '.web.jsx', '.web.js', '.ts', '.tsx', '.js', '.jsx', '.json', '.css', '.less', '.scss'],
 		alias: {
 			// 依赖
+			'react/lib': path.resolve(APP_ROOT, 'node_modules/react/lib'),
 			'react': path.resolve(APP_ROOT, 'node_modules/react/cjs/react.production.min.js'),
 			'react-router': path.resolve(APP_ROOT, 'node_modules/react-router/umd/ReactRouter.min.js'),
 			'react-dom/server': path.resolve(APP_ROOT, 'node_modules/react-dom/server'),
+			'react-dom/cjs': path.resolve(APP_ROOT, 'node_modules/react-dom/cjs'),
 			'react-dom': path.resolve(APP_ROOT, 'node_modules/react-dom/cjs/react-dom.production.min.js'),
 			'react-redux': path.resolve(APP_ROOT, 'node_modules/react-redux/dist/react-redux.min.js'),
 			'react-router-redux': path.resolve(APP_ROOT, 'node_modules/react-router-redux/dist/ReactRouterRedux.min.js'),
 			'redux-thunk': path.resolve(APP_ROOT, 'node_modules/redux-thunk/dist/redux-thunk.min.js'),
 			'rc-form/lib': path.resolve(APP_ROOT, 'node_modules/rc-form/lib'),
 			'rc-form': path.resolve(APP_ROOT, 'node_modules/rc-form/dist/rc-form.min.js'),
+			'redux/lib': path.resolve(APP_ROOT, 'node_modules/redux/lib'),
 			'redux': path.resolve(APP_ROOT, 'node_modules/redux/dist/redux.min.js'),
 			'immutable': path.resolve(APP_ROOT, 'node_modules/immutable/dist/immutable.min.js'),
 			'babel-polyfill': path.resolve(APP_ROOT, 'node_modules/babel-polyfill/dist/polyfill.min.js'),
@@ -69,23 +73,7 @@ const webpackConfig = {
 		}
 	},
 	entry: {
-		common: [
-			'babel-polyfill',
-			'react',
-			'react-dom',
-			'react-redux',
-			'react-router',
-			'react-router-redux',
-			'react-fastclick',
-			'redux',
-			'redux-thunk',
-			'classnames',
-			'immutable',
-			'pure-render-decorator',
-			'lodash'
-		],
-		main: path.resolve(APP_ROOT, 'src/pages/main.js') 
-
+		main: path.resolve(APP_ROOT, 'src/pages/main.js')
 	},
 	output: {
 		path: path.resolve(APP_ROOT, 'dist'),
@@ -117,7 +105,7 @@ const webpackConfig = {
 						}
 					}
 				]
-			}, 
+			},
 			{
 				test: /\.(css|scss)$/,
 				use: ['style-loader', 'css-loader', postcssLoader, 'sass-loader'],
@@ -129,19 +117,30 @@ const webpackConfig = {
 			},
 			{
 				test: /\.less$/,
-				use: ['style-loader', 'css-loader', postcssLoader, 'less-loader'],
+				use: [
+					'style-loader',
+					'css-loader',
+					postcssLoader,
+					{
+						loader: "less-loader",
+						options: {
+							javascriptEnabled: true
+						}
+					}
+				],
+
 			},
 			{
 				test: /\.scss$/,
 				include: [path.resolve(APP_ROOT, "src/css")],
-				exclude: [path.resolve(APP_ROOT, "node_modules"), path.resolve(APP_ROOT, "src/pages")], 
+				exclude: [path.resolve(APP_ROOT, "node_modules"), path.resolve(APP_ROOT, "src/pages")],
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
 					use: ['css-loader', postcssLoader, 'sass-loader']
 				})
 			},
 			{
-				test: /\.(png|jpg|gif|eot|ttf|woff|woff2)$/,
+				test: /\.(png|jpg|gif|eot|ttf|woff|woff2|svg)$/,
 				loader: 'url-loader',
 				options: {
 					limit: 10000
@@ -154,47 +153,60 @@ const webpackConfig = {
 			{
 				test: /\.html$/i,
 				use: 'html-loader'
-			},
-			{
-				test: /\.svg$/,
-				use: 'svg-sprite-loader',
-				include: [
-					// antd-mobile 内置svg，后续可以等它支持2.x做修改
-					require.resolve('antd-mobile').replace(/warn\.js$/, ''), 
-					path.resolve(APP_ROOT, ''),  // 业务代码本地私有 svg 存放目录
-				],
 			}
 		]
 	},
+	optimization: {
+		// 默认关闭压缩
+		minimize: ENV_IS_DEV ? false : JSON.parse(process.env.UGLIFY_JS),
+		// 原：NamedModulesPlugin()
+		namedModules: true,
+		// 原：NoEmitOnErrorsPlugin() - 异常继续执行
+		noEmitOnErrors: true,
+		// 原：ModuleConcatenationPlugin() - 模块串联
+		concatenateModules: ENV_IS_DEV,
+		// 原：CommonsChunkPlugin()
+		splitChunks: {
+			name: true,
+			cacheGroups: {
+				commons: {
+					test: chunk => {
+						const modules = [
+							'babel-polyfill',
+							'react',
+							'react-dom',
+							'react-redux',
+							'react-router',
+							'react-router-redux',
+							'react-fastclick',
+							'redux',
+							'redux-thunk',
+							'classnames',
+							'immutable',
+							'lodash', // 这个用的地方偏多
+						];
+						let isInModules = modules.some(i => (new RegExp(`[\\/]node_modules[\\/]${i}`)).test(chunk.resource));
+						return chunk.resource
+							&& /\.js$/.test(chunk.resource)
+							&& isInModules;
+					},
+					name: 'common',
+					chunks: 'all',
+				}
+			}
+		},
+	},
 	plugins: [
 		new ExtractTextPlugin({
-			filename: 'css/initial.[name].[hash:8].css', 
+			filename: 'css/initial.[name].[hash:8].css',
 			allChunks: true
 		}),
-		/**
-		 * 优化
-		 * 查找相等或近似的模块，避免在最终生成的文件中出现重复的模块
-		 */
-		new webpack.optimize.CommonsChunkPlugin({
-			name: 'common', // 将公共模块提取，生成名为`common`的chunk
-			chunks: ['common', 'main'], // 提取哪些模块共有的部分
-		}),
-		/**
-		 * 报错继续运行2.0弃用NoErrorsPlugin，改用NoEmitOnErrorsPlugin
-		 */
-		new webpack.NoEmitOnErrorsPlugin(),
-		/**
-		 * webpack3.x 模块串联, 移入dist
-		 */
-		// new webpack.optimize.ModuleConcatenationPlugin()
-		
 	]
 };
-
 const defaultConfig = {
 	// cheap-module-eval-source-map 原始源码（仅限行）
 	// cheap-eval-source-map 转换过的代码（仅限行）// 重构建比较好
-	devtool: ENV_IS_DEV ? 'cheap-module-eval-source-map' : undefined, 
+	devtool: ENV_IS_DEV ? 'cheap-module-eval-source-map' : undefined,
 	resolve: {
 		extensions: ['.jsx', '.js']
 	},
@@ -217,9 +229,7 @@ const defaultConfig = {
 		// 		pathRewrite: {"^/api" : ""}
 		// 	}
 		// },
-		// hot: true,// HMR 注意需要配合 HotModuleReplacementPlugin 与 module.hot 同--hot
-		// hotOnly: true, // 报错原因
-		// lazy: true
+		hot: true, // 同--hot
 	},
 	node: {
 		global: true,
