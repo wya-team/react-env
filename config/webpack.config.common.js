@@ -73,23 +73,7 @@ const webpackConfig = {
 		}
 	},
 	entry: {
-		// common: [
-		// 	// 'babel-polyfill',
-		// 	'react',
-		// 	'react-dom',
-		// 	'react-redux',
-		// 	'react-router',
-		// 	'react-router-redux',
-		// 	'react-fastclick',
-		// 	'redux',
-		// 	'redux-thunk',
-		// 	'classnames',
-		// 	'immutable',
-		// 	'pure-render-decorator',
-		// 	'lodash' // 这个用的地方偏多
-		// ],
-		main: path.resolve(APP_ROOT, 'src/pages/main.js') 
-
+		main: path.resolve(APP_ROOT, 'src/pages/main.js')
 	},
 	output: {
 		path: path.resolve(APP_ROOT, 'dist'),
@@ -121,7 +105,7 @@ const webpackConfig = {
 						}
 					}
 				]
-			}, 
+			},
 			{
 				test: /\.(css|scss)$/,
 				use: ['style-loader', 'css-loader', postcssLoader, 'sass-loader'],
@@ -134,22 +118,22 @@ const webpackConfig = {
 			{
 				test: /\.less$/,
 				use: [
-					'style-loader', 
-					'css-loader', 
-					postcssLoader, 
+					'style-loader',
+					'css-loader',
+					postcssLoader,
 					{
 						loader: "less-loader",
-						options: { 
-							javascriptEnabled: true 
+						options: {
+							javascriptEnabled: true
 						}
 					}
 				],
-				
+
 			},
 			{
 				test: /\.scss$/,
 				include: [path.resolve(APP_ROOT, "src/css")],
-				exclude: [path.resolve(APP_ROOT, "node_modules"), path.resolve(APP_ROOT, "src/pages")], 
+				exclude: [path.resolve(APP_ROOT, "node_modules"), path.resolve(APP_ROOT, "src/pages")],
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
 					use: ['css-loader', postcssLoader, 'sass-loader']
@@ -172,28 +156,6 @@ const webpackConfig = {
 			}
 		]
 	},
-	/**
-	 * webpack 4.x 新增
-	 */
-	// optimization: {
-	// 	splitChunks: {
-	// 		name: true,
-	// 		// 如果a.js/b.js, 都加载了模块utils.js(40kb), 有可能会被分割出去（maxAsyncRequests）
-	// 		maxSize: 30000,
-	// 		cacheGroups: {
-	// 			commons: {
-	// 				chunks: 'initial',
-	// 				minChunks: 10
-	// 			},
-	// 			vendors: {
-	// 				test: /[\\/]node_modules[\\/]/,
-	// 				chunks: 'all',
-	// 				priority: -10
-	// 			}
-	// 		}
-	// 	},
-	// 	runtimeChunk: true
-	// },
 	optimization: {
 		// 默认关闭压缩
 		minimize: ENV_IS_DEV ? false : JSON.parse(process.env.UGLIFY_JS),
@@ -204,25 +166,41 @@ const webpackConfig = {
 		// 原：ModuleConcatenationPlugin() - 模块串联
 		concatenateModules: ENV_IS_DEV,
 		// 原：CommonsChunkPlugin()
-		// splitChunks: {
-		// 	name: true,
-		// 	cacheGroups: {
-		// 		commons: {
-		// 			chunks: 'all',
-		// 			minChunks: 10
-		// 		},
-		// 		vendors: {
-		// 			test: /[\\/]node_modules[\\/]/,
-		// 			chunks: 'all',
-		// 			priority: -10
-		// 		}
-		// 	}
-		// },
-		// runtimeChunk: true
+		splitChunks: {
+			name: true,
+			cacheGroups: {
+				commons: {
+					test: chunk => {
+						const modules = [
+							'babel-polyfill',
+							'react',
+							'react-dom',
+							'react-redux',
+							'react-router',
+							'react-router-redux',
+							'react-fastclick',
+							'redux',
+							'redux-thunk',
+							'classnames',
+							'immutable',
+							'lodash', // 这个用的地方偏多
+							'wya-fetch', 
+							'wya-utils', 
+						];
+						let isInModules = modules.some(i => (new RegExp(`[\\/]node_modules[\\/]${i}`)).test(chunk.resource));
+						return chunk.resource
+							&& /\.js$/.test(chunk.resource)
+							&& isInModules;
+					},
+					name: 'common',
+					chunks: 'all',
+				}
+			}
+		},
 	},
 	plugins: [
 		new ExtractTextPlugin({
-			filename: 'css/initial.[name].[hash:8].css', 
+			filename: 'css/initial.[name].[hash:8].css',
 			allChunks: true
 		}),
 	]
@@ -230,7 +208,7 @@ const webpackConfig = {
 const defaultConfig = {
 	// cheap-module-eval-source-map 原始源码（仅限行）
 	// cheap-eval-source-map 转换过的代码（仅限行）// 重构建比较好
-	devtool: ENV_IS_DEV ? 'cheap-module-eval-source-map' : undefined, 
+	devtool: ENV_IS_DEV ? 'cheap-module-eval-source-map' : undefined,
 	resolve: {
 		extensions: ['.jsx', '.js']
 	},
@@ -253,9 +231,7 @@ const defaultConfig = {
 		// 		pathRewrite: {"^/api" : ""}
 		// 	}
 		// },
-		hot: true, // HMR 注意需要配合 HotModuleReplacementPlugin 与 module.hot 同--hot
-		// hotOnly: true, // 报错原因
-		// lazy: true
+		hot: true, // 同--hot
 	},
 	node: {
 		global: true,
