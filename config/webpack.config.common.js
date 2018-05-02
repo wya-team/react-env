@@ -163,8 +163,8 @@ const webpackConfig = {
 		namedModules: true,
 		// 原：NoEmitOnErrorsPlugin() - 异常继续执行
 		noEmitOnErrors: true,
-		// 原：ModuleConcatenationPlugin() - 模块串联
-		concatenateModules: ENV_IS_DEV,
+		// 原：ModuleConcatenationPlugin() - 模块串联 - dev模式下回影响antd（比如：Pagination, 和语言有关）
+		concatenateModules: !ENV_IS_DEV,
 		// 原：CommonsChunkPlugin()
 		splitChunks: {
 			name: true,

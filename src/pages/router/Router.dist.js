@@ -30,6 +30,9 @@ class Root extends Component {
 	constructor(props, context) {
 		super(props, context);
 	}
+	componentDidCatch(error, info) {
+		console.log(error, info);
+	}
 	render() {
 		return (
 			<Provider store={store}>
