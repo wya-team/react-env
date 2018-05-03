@@ -180,7 +180,8 @@ const webpackConfig = {
 							'immutable',
 							'lodash', // 这个用的地方偏多
 						];
-						let isInModules = modules.some(i => (new RegExp(`[\\/]node_modules[\\/]${i}`)).test(chunk.resource));
+						// new RegExp(`([\\\\/]+)node_modules([\\\\/]+)`) -> /([\\\/]+)node_modules([\\\/]+)/
+						let isInModules = modules.some(i => (new RegExp(`([\\\\/]+)node_modules([\\\\/]+)${i}`)).test(chunk.resource));
 						return chunk.resource
 							&& /\.js$/.test(chunk.resource)
 							&& isInModules;
