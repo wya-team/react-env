@@ -147,10 +147,6 @@ const webpackConfig = {
 				}
 			},
 			{
-				test: /\.json$/i,
-				use: 'json-loader'
-			},
-			{
 				test: /\.html$/i,
 				use: 'html-loader'
 			}
