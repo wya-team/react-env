@@ -87,7 +87,6 @@ const webpackConfig = {
 		publicPath: '/'
 	},
 	module: {
-		exprContextCritical: false,
 		rules: [
 			{
 				test: /\.jsx?$/,
