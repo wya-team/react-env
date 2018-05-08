@@ -181,7 +181,7 @@ const webpackConfig = {
 							'lodash', // 这个用的地方偏多
 						];
 						// new RegExp(`([\\\\/]+)node_modules([\\\\/]+)`) -> /([\\\/]+)node_modules([\\\/]+)/
-						let isInModules = modules.some(i => (new RegExp(`([\\\\/]+)node_modules([\\\\/]+)${i}`)).test(chunk.resource));
+						let isInModules = modules.some(i => (new RegExp(`([\\\\/]+)node_modules([\\\\/_]+)${i}`)).test(chunk.resource));
 						return chunk.resource
 							&& /\.js$/.test(chunk.resource)
 							&& isInModules;
