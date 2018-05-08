@@ -173,7 +173,7 @@ const webpackConfig = {
 							'react-redux',
 							'react-router',
 							'react-router-redux',
-							'react-fastclick',
+							// 'react-fastclick',
 							'redux',
 							'redux-thunk',
 							'classnames',

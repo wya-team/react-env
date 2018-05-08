@@ -1,6 +1,7 @@
 import 'babel-polyfill';
-import initReactFastclick from 'react-fastclick';
-initReactFastclick();
+// 不兼容antd-mobile, 换cdn的fastclick
+// import initReactFastclick from 'react-fastclick';
+// initReactFastclick();
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render } from 'react-dom';
