@@ -183,7 +183,7 @@ const webpackConfig = {
 							'wya-utils',
 						];
 						// new RegExp(`([\\\\/]+)node_modules([\\\\/]+)`) -> /([\\\/]+)node_modules([\\\/]+)/
-						let isInModules = modules.some(i => (new RegExp(`([\\\\/]+)node_modules([\\\\/]+)${i}`)).test(chunk.resource));
+						let isInModules = modules.some(i => (new RegExp(`([\\\\/]+)node_modules([\\\\/_]+)${i}`)).test(chunk.resource));
 						return chunk.resource
 							&& /\.js$/.test(chunk.resource)
 							&& isInModules;
