@@ -11,6 +11,8 @@ module.exports = {
 		}),
 		require('autoprefixer')({
 			/* ...options */
+			// 不删除老式写法
+			remove: false
 		})
 	]
 };
