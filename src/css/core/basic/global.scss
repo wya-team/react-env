@@ -14,10 +14,9 @@
 		$end: str_slice($val, ($i+1), ($i+1));
 		@return #{$start}#{$end};
 	} @else {
-		@return #{$start}
+		@return #{$start};
 	}
 }
-
 
 /**
  * [globalFontSize 输出全局g-fs-#{值}]
@@ -75,11 +74,11 @@
 		} @else {
 			@if (str_length($t) == 4 or str_length($t) == 0 ) {
 				@each $v in $lis {
-					@if(type_of($v) == 'number'){
+					@if (type_of($v) == 'number') {
 						.#{$prefix}-pd-#{$v} {
 							@include commonPadding($v);
 						}
-					}@else{
+					} @else {
 						.#{$prefix}-pd-#{nth(map-keys($v),1)} {
 							@include commonPadding(nth(map-values($v),1));
 						}
@@ -88,11 +87,11 @@
 				}
 			} @else {
 				@each $v in $lis {
-					@if(type_of($v) == 'number'){
+					@if (type_of($v) == 'number') {
 						.#{$prefix}-pd-#{$t}-#{$v} {
 							@include commonPadding($t, $v);
 						}
-					}@else{
+					} @else {
 						.#{$prefix}-pd-#{$t}-#{nth(map-keys($v),1)} {
 							@include commonPadding($t, nth(map-values($v),1));
 						}
@@ -116,11 +115,11 @@
 		} @else {
 			@if (str_length($t) == 4 or str_length($t) == 0) {
 				@each $v in $lis {
-					@if(type_of($v) == 'number'){
+					@if (type_of($v) == 'number') {
 						.#{$prefix}-m-#{$v} {
 							@include commonMargin($v);
 						}
-					}@else{
+					} @else {
 						.#{$prefix}-m-#{nth(map-keys($v),1)} {
 							@include commonMargin(nth(map-values($v),1));
 						}
@@ -128,11 +127,11 @@
 				}
 			} @else {
 				@each $v in $lis {
-					@if(type_of($v) == 'number'){
+					@if (type_of($v) == 'number') {
 						.#{$prefix}-m-#{$t}-#{$v} {
 							@include commonMargin($t, $v);
 						}
-					}@else{
+					} @else {
 						.#{$prefix}-m-#{$t}-#{nth(map-keys($v),1)} {
 							@include commonMargin($t, nth(map-values($v),1));
 						}
@@ -150,14 +149,14 @@
  * @return {[type]}        [description]
  */
 @mixin globalLayout($total) {
-	%float{
+	%float {
 		float: left;
 	}
 	@for $i from 1 through $total {
 		.#{$prefix}-w-#{$i} {
-			width: commonColumnWidth($i, $total)
+			width: commonColumnWidth($i, $total);
 		}
-		.#{$prefix}-fw-#{$i}{
+		.#{$prefix}-fw-#{$i} {
 			@extend %float;
 			@extend .#{$prefix}-w-#{$i};
 		}
@@ -189,7 +188,7 @@
 		@if (type-of($code) == 'color') {
 			.#{$prefix}-bg-#{$name} {
 				background-color: $code;
-				@if (type-of($code2) == 'color'){
+				@if (type-of($code2) == 'color') {
 					color: $code2;
 				}
 			}
@@ -264,7 +263,7 @@
  * @param     {[type]}    $imgsize [description]
  * @return    {[type]}             [description]
  */
-@mixin globalImgSize($imgsize){
+@mixin globalImgSize($imgsize) {
 	@for $i from 1 through length($imgsize) {
 		.#{$prefix}-img-#{nth($imgsize, $i)} {
 			max-width: #{nth($imgsize, $i) / $scale}#{$unit};

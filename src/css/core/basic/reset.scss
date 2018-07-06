@@ -38,41 +38,95 @@ body {
  * g-reset
  * 用户初始化元素的类
  */
-.g-reset ol,
-.g-reset ul,
-.g-reset li {
-	list-style: none;
+.g-reset {
+	ol, ul, li {
+		list-style: none;
+	}
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
+	img {
+		vertical-align: middle;
+		max-width: 100%;
+	}
+	.inline {
+		display: inline;
+	}
+	i, b, em, span {
+		font-weight: normal;
+		font-style: normal;
+	}
+	input, textarea {
+		outline: none;
+	} 
+	button {
+		outline-style: none;
+	}
 }
 
-.g-reset a {
-	text-decoration: none;
-	color: inherit;
-}
+/**
+ * g-unset 避免富文本被其他第三方初始化
+ */
+.g-unset {
+	*,
+	*:before,
+	*:after {
+		margin: unset;
+		padding: unset;
+	}
 
-.g-reset img {
-	vertical-align: middle;
-	max-width: 100%;
-}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin-top: unset;
+		margin-bottom: unset;
+		color: unset;
+		font-weight: unset;
+	}
+	p {
+		margin-top: unset;
+		margin-bottom: unset;
+	}
 
-.g-reset .inline {
-	display: inline
-}
+	li {
+		display: list-item;
+	}
 
-.g-reset i,
-.g-reset b,
-.g-reset em,
-.g-reset span {
-	font-weight: normal;
-	font-style: normal;
-	display: inline-block;
-}
-.g-reset button {
-	outline-style: none;
-}
-.g-reset input, 
-.g-reset textarea,
-{
-	outline: none; 
+	ol {
+		display: block;
+		list-style-type: decimal;
+		margin-top: 1em;
+		margin-bottom: 1em;
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 40px;
+	}
+
+	ul {
+		display: block;
+		list-style-type: disc;
+		margin-top: 1em;
+		margin-bottom: 1 em;
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 40px;
+	}
+	// ol,
+	// ul,
+	// dl {
+	// 	margin-top: 0;
+	// 	margin-bottom: 1em;
+	// }
+	// ol ol,
+	// ul ul,
+	// ol ul,
+	// ul ol {
+	// 	margin-bottom: 0;
+	// }
 }
 
 /**
@@ -108,13 +162,14 @@ body {
 #pages,
 [class*="scroll-wrap-content"] {
 	overflow: auto;
+	height: 100%;
 }
 
-[class*="scroll-container"]  {
+[class*="scroll-container"] {
 	-webkit-overflow-scrolling: touch;
 	overflow-scrolling: touch;
 	overflow: auto;
-	&.__none{
+	&.__none {
 		-webkit-overflow-scrolling: auto;
 		overflow-scrolling: auto;
 	}

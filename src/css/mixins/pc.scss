@@ -9,7 +9,6 @@
  * @param     {[type]}    $hoverColor:$color [description]
  * @return    {[type]}                       [description]
  */
-
 @mixin pcBtnBase($bgColor, $hoverBg, $color, $hoverColor:$color) {
 	display: inline-block;
 	padding: 0 $pc-btn-pd-lr / $scale;
@@ -43,12 +42,11 @@
  * @param     {[type]}    $hoverColor:$color [description]
  * @return    {[type]}                       [description]
  */
-
 @mixin pcBtnLineBase($gradient, $bgColor, $hoverBgStart, $hoverBgEnd, $color, $hoverColor:$color) {
 	display: inline-block;
 	padding: 0 $pc-btn-pd-lr / $scale;
 	height: $pc-btn-height / $scale;
-	line-height: $pc-btn-height / $scale;
+	line-height: $pc-btn-height - 2 / $scale;
 	border-radius: $pc-btn-radius / $scale;
 	background: $bgColor;
 	color: $color;
@@ -62,7 +60,7 @@
 		color: $hoverColor;
 	}
 	&:active {
-		@include commonBgLinear($gradient, darken($hoverBgStart, 5%), darken($hoverBgEnd, 5%));
+		@include commonBgLinear($gradient,  darken($hoverBgStart, 5%),  darken($hoverBgEnd, 5%));
 	}
 }
 
@@ -77,7 +75,6 @@
  * @param     {[type]}    $hoverColor:$color [description]
  * @return    {[type]}                       [description]
  */
-
 @mixin pcBtnGradientBase($gradient, $bgColorStart, $bgColorEnd, $hoverBgStart, $hoverBgEnd, $color, $hoverColor:$color) {
 	display: inline-block;
 	padding: 0 $pc-btn-pd-lr / $scale;
@@ -103,7 +100,6 @@
 /**
  * 通用表格
  */
-
 @mixin pcTableBase($text-align: left, $padding: 20px, $radius: 4px) {
 	overflow-x: auto;
 	background: $white;
@@ -120,7 +116,7 @@
 			font-weight: normal;
 			vertical-align: middle;
 			white-space: nowrap;
-			padding: ($pc-table-tr-height - $pc-table-line-height) / 2 / $scale $padding-md / $scale;
+			padding: ($pc-table-tr-height - $pc-table-line-height) / 2 / $scale  $padding-md / $scale;
 		}
 	}
 	tbody {
@@ -136,17 +132,10 @@
 				font-size: 0;
 				visibility: hidden;
 			}
+
 		}
 		tr.__hover:hover {
 			background: $pc-table-hover;
 		}
 	}
 }
-
-/**
- * 通用表单
- */
-
-// @mixin pcInputBase() {}
-
-// @mixin pcFormBase {}

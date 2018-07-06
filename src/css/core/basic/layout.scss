@@ -7,7 +7,6 @@
  *  return g-w-value, g-fw-value 浮动
  */
 
-
 @include globalLayout($total);
 
 /**
@@ -71,7 +70,9 @@
 .#{$prefix}-br-sem {
 	border-radius: $default-border-radius / $scale;
 }
-
+.#{$prefix}-b {
+	@include commonBorder(brtl);
+}
 .#{$prefix}-bb {
 	@include commonBorder(b);
 }
@@ -116,22 +117,24 @@
 	white-space: nowrap;
 }
 
-.#{$prefix}-nobreak {
-	@include commonNoBreak;
+/**
+ * g-nobreak -> g-break
+ * 历史遗留 暂时先同时保留
+ */
+.#{$prefix}-nobreak, #{$prefix}-break {
+	@include commonWordBreak;
 }
-
 
 .#{$prefix}-fixed {
 	position: fixed !important;
 }
 .#{$prefix}-relative {
-	position: relative!important;
+	position: relative !important;
 }
 
 .#{$prefix}-absolute {
-	position: absolute!important;
+	position: absolute !important;
 }
-
 
 .#{$prefix}-clearfix:before,
 .#{$prefix}-clearfix:after,
@@ -155,9 +158,8 @@
 	float: left;
 }
 
-
 .#{$prefix}-h-full {
-	height: 100vh
+	height: 100vh;
 }
 
 /**
@@ -205,8 +207,11 @@
 	line-height: $line-height-limit / $scale;
 }
 
-.#{$prefix}-hide {
-	display: hidden;
+/**
+ * display
+ */
+.#{$prefix}-none, .#{$prefix}-hide {
+	display: none;
 }
 .#{$prefix}-show {
 	display: block;
@@ -218,6 +223,33 @@
 	display: inline-block;
 }
 
+/**
+ * cursor
+ */
 .#{$prefix}-pointer {
 	cursor: pointer;
+}
+
+/**
+ * divide 划分
+ */
+.g-divide {
+	margin: 0 8px;
+	display: inline-block;
+	height: 12px;
+	width: 1px;
+	vertical-align: middle;
+	position: relative;
+	box-sizing: border-box;
+	background: #ccc;
+}
+
+/**
+  * dot 圆点
+  */
+.g-dot {
+	width: 5px / $scale;
+	height: 5px / $scale;
+	border-radius: 50%;
+	display: block;
 }

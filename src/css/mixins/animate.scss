@@ -4,26 +4,22 @@
  * @param  {[number]} $length:    50%           [高度或宽度]
  * @return {[type]}             [description]
  */
-
 @mixin animateSlide($direction: down, $length: 50%) {
 	z-index: $popup-zindex;
 	background: $popup-bg-color;
-	@if ($direction=='down') {
+	@if ($direction == 'down') {
 		width: 100%;
 		height: $length;
 		@include commonAbsolute(null, 0, 0, 0);
-	}
-	@else if ($direction=='up') {
+	} @else if ($direction == 'up') {
 		width: 100%;
 		height: $length;
 		@include commonAbsolute(0, 0, null, 0);
-	}
-	@else if ($direction=='left') {
+	} @else if ($direction == 'left') {
 		height: 100%;
 		width: $length;
 		@include commonAbsolute(0, null, 0, 0);
-	}
-	@else if ($direction=='right') {
+	} @else if ($direction == 'right') {
 		height: 100%;
 		width: $length;
 		@include commonAbsolute(0, 0, 0, null);
@@ -32,8 +28,6 @@
 	animation-duration: $popup-duration;
 	animation-timing-function: $popup-timing;
 }
-
-
 
 @mixin animateFade($start, $end) {
 	0% {

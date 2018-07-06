@@ -16,9 +16,9 @@ $total: 12 !default;
 $module: 'pc';
 
 // 主要颜色
-$main-color-1: $red !default;
-$main-color-2: $blue !default;
-$main-color-3: $yellow !default;
+$main-color-1: $red-mid !default;
+$main-color-2: $blue-mid !default;
+$main-color-3: $yellow-mid !default;
 
 // 背景颜色
 $body-bg-color: #f5f6fa;
@@ -31,20 +31,21 @@ $disable-bg-color: #eee;
 
 // 字体颜色
 $font-color-deep: $black !default;
-$font-color-dark: $gray_1 !default;
-$font-color-mid: $gray_2 !default;
-$font-color-light: $gray_3 !default;
+$font-color-dark: $black-dark !default;
+$font-color-mid: $black-mid !default;
+$font-color-light: $black-light !default;
 
 // 边框颜色
 $border-color: #cdcdcd !default;
 
 // 字体尺寸
 $font-size-base: 14px !default;
-$font-size-lg: $font-size-base+2px !default;
+$font-size-lg: $font-size-base + 2px !default;
 
 // 行高
 $line-height-base: 16px !default;
 $line-height-limit: 32px !default; //限高
+
 // 默认圆角
 $default-border-radius: 8px;
 
