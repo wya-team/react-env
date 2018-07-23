@@ -2,7 +2,7 @@ import 'babel-polyfill';
 // 不兼容antd-mpbile, cdn引入fastclick
 // import initReactFastclick from 'react-fastclick';
 // initReactFastclick();
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { render } from 'react-dom';
 import { createStore } from 'redux';
@@ -37,9 +37,9 @@ class Root extends Component {
 	render() {
 		return (
 			<Provider store={store}>
-				<div>
+				<Fragment>
 					<Router history={_global.history} routes={routeConfig} />
-				</div>
+				</Fragment>
 			</Provider>
 		);
 	}
