@@ -43,7 +43,7 @@ class Aside extends Component {
 		});
 	}
 	render() {
-		const { collapsed, actions } = this.props;
+		const { collapsed, actions, getRoutes } = this.props;
 		const { mode, selectedKey, openKey } = this.state;
 		const user = getCookie("userManage") || {};
 		return (
@@ -55,7 +55,7 @@ class Aside extends Component {
 				// onCollapse={this.handleCollapse}
 				style={{ overflowY: 'auto' }}
 			>
-				<div 
+				<div
 					style={{ height: 64, textAlign: 'center', color: 'white' }}
 				>{user.token || 'logo'}</div>
 				{
@@ -68,9 +68,10 @@ class Aside extends Component {
 								mode: mode,
 								selectedKeys: [selectedKey],
 								openKeys: [openKey],
-								onOpenChange: this.handleOpenMenu
+								onOpenChange: this.handleOpenMenu,
 							},
-							actions: actions
+							actions,
+							getRoutes
 						}
 					)
 				}

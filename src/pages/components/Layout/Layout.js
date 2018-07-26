@@ -1,12 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import { Layout, Menu, Icon, message } from 'antd';
 import Aside from './Aside';
-// redux 
+// redux
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as LayoutActions from '@actions/layout';
 import * as typesLogin from '@constants/actions/login';
 import { delCookie } from '@utils/utils';
+import Top from './TopNav';
+import Left from './LeftNav';
 function mapStateToProps(state) {
 	return {
 		layoutMain: state.layoutMain
@@ -20,7 +22,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 // decorator
-export default (options = {}) => function createDecorator(LeftNav, TopNav) {
+export default (opts = {}) => function createDecorator(LeftNav = Left, TopNav = Top) {
+	const { id, path, footer, getRoutes } = opts;
 	class LayoutDecorator extends Component {
 		constructor() {
 			super();
@@ -63,18 +66,19 @@ export default (options = {}) => function createDecorator(LeftNav, TopNav) {
 			return (
 				<div style={{ height: _global.innerHeight }}>
 					<Layout className="ant-layout-has-sider g-ant-layout">
-						<Aside path={pathname} collapsed={collapsed} component={LeftNav} actions={actions}/>
+						<Aside path={pathname} collapsed={collapsed} component={LeftNav} actions={actions} getRoutes={getRoutes}/>
 						<Layout className="g-ant-layout" id="contents">
 							<Layout.Header className="g-flex g-bg-white g-ai-c g-pd" style={{ background: "white" }}>
-								{ 
-									TopNav 
+								{
+									TopNav
 										? (
-											<TopNav 
+											<TopNav
 												collapsed={collapsed}
 												onToggle={this.handleToggle}
 												onSignOut={this.handleSignOut}
+												pathname={pathname}
 											/>
-										) 
+										)
 										: (
 											<Fragment>
 												<div className="g-col" style={{ marginLeft: -25 }}>

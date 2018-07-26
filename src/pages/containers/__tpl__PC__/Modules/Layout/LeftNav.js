@@ -24,6 +24,9 @@ class Nav extends Component {
 					<Menu.Item key="/tpl-pc/third/two"><Link to={'/tpl-pc/third/two'}>TWO</Link></Menu.Item>
 					<Menu.Item key="/tpl-pc/third/three"><Link to={'/tpl-pc/third/three'}>THREE</Link></Menu.Item>
 				</Menu.SubMenu>
+				<Menu.Item key="/tpl-pc/table">
+					<Link to={'/tpl-pc/table'}><Icon type="mobile" /><span className="_nav-text">TABLE</span></Link>
+				</Menu.Item>
 			</Menu>
 		);
 	}

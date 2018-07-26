@@ -1,5 +1,5 @@
 import 'babel-polyfill';
-// 不兼容antd-mpbile, cdn引入fastclick
+// 不兼容antd-mobile, 换cdn的fastclick
 // import initReactFastclick from 'react-fastclick';
 // initReactFastclick();
 import React, { Component, Fragment } from 'react';

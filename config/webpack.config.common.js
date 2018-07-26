@@ -70,6 +70,8 @@ const webpackConfig = {
 			'@components': path.resolve(APP_ROOT, 'src/pages/components'),
 			'@constants': path.resolve(APP_ROOT, 'src/pages/constants'),
 			'@utils': path.resolve(APP_ROOT, 'src/pages/utils'),
+			'@router': path.resolve(APP_ROOT, 'src/pages/router'),
+			'@services': path.resolve(APP_ROOT, 'src/pages/services'),
 		}
 	},
 	entry: {
@@ -179,6 +181,8 @@ const webpackConfig = {
 							'classnames',
 							'immutable',
 							'lodash', // 这个用的地方偏多
+							'wya-fetch',
+							'wya-utils',
 						];
 						// new RegExp(`([\\\\/]+)node_modules([\\\\/]+)`) -> /([\\\/]+)node_modules([\\\/]+)/
 						let isInModules = modules.some(i => (new RegExp(`([\\\\/]+)node_modules([\\\\/_]+)${i}`)).test(chunk.resource));

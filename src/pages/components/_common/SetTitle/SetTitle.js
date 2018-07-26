@@ -4,8 +4,8 @@ import { Link } from 'react-router';
 import pureRender from 'pure-render-decorator';
 @pureRender
 class WxSetTitle extends Component {
-	constructor(props) {
-		super(props);
+	constructor(...params) {
+		super(...params);
 	}
 	componentDidMount() {
 		this.setTitle();
