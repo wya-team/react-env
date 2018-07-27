@@ -64,7 +64,7 @@ export default (opts = {}) => function createDecorator(LeftNav = Left, TopNav = 
 			const { location: { pathname }, actions } = this.props;
 			const { collapsed } = this.state;
 			return (
-				<div style={{ height: _global.innerHeight }}>
+				<div className="g-reset-antd g-reset">
 					<Layout className="ant-layout-has-sider g-ant-layout">
 						<Aside path={pathname} collapsed={collapsed} component={LeftNav} actions={actions} getRoutes={getRoutes}/>
 						<Layout className="g-ant-layout" id="contents">

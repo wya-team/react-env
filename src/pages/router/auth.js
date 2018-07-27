@@ -5,9 +5,7 @@ const UserLoggedIn = (nextState) => {
 	if (user) {
 		state = true;
 	}
-	// return state;
-	// 模拟登录
-	return false;
+	return state;
 };
 export const redirectUserToLogin = (nextState, replace, callback) => {
 	if (!UserLoggedIn(nextState)) { // 未登录
@@ -17,7 +15,7 @@ export const redirectUserToLogin = (nextState, replace, callback) => {
 };
 export const redirectUserToHome = (nextState, replace, callback) => {
 	if (UserLoggedIn(nextState)) { // 已登录
-		replace('/human');
+		replace('/home');
 	}
 	callback();
 };
@@ -29,12 +27,12 @@ export const redirectUserToHome = (nextState, replace, callback) => {
  */
 
 export const createLoginAuth = (data = {}, replace = true, opts = {}) => {
-	// _global.xxx = null;
+	_global.user = data;
 
 	// 设置缓存
 	replace && setItem(`user_${_global.version}`, data);
 	// 页面跳转
-	replace && _global.history.replace({ pathname: '/human' });
+	replace && _global.history.replace({ pathname: '/home' });
 };
 /**
  * 设置登录状态，权限由各自模块单独管理
@@ -42,7 +40,7 @@ export const createLoginAuth = (data = {}, replace = true, opts = {}) => {
  * 2. 删除LocalStorage: user
  */
 export const clearLoginAuth = (replace = true, opts = {}) => {
-	// _global.xxx = null;
+	_global.user = null;
 
 	delItem(`user_${_global.version}`);
 

@@ -5,6 +5,7 @@
 import ReactDOM from 'react-dom';
 import { getItem, setItem, delItem, getCookie, getDevice, getParseUrl, getUrlParam, defineProperty } from '../utils/utils';
 typeof window === "object" ? window.BROWSER = true : window.BROWSER = false;
+import { createLoginAuth } from './auth';
 /**
  * 主要目的是禁止随意操作全局对象
  */
@@ -28,6 +29,15 @@ let GLOBAL_OBJECT = new Proxy({}, {
 BROWSER ? window._global = GLOBAL_OBJECT : this._global = GLOBAL_OBJECT;
 BROWSER ? window.__DEV__ = process.env.NODE_ENV : this.__DEV__ = process.env.NODE_ENV;
 /**
+ * 用于缓存的版本的管理
+ */
+defineProperty(_global, 'version', '1.0');
+/**
+ * 用户登录的信息
+ */
+defineProperty(_global, 'user', {});
+createLoginAuth(getItem(`user_${_global.version}`) || {}, false);
+/**
  * hack
  * 移动端的延迟 location
  */
@@ -44,10 +54,7 @@ defineProperty(_global, 'scale', 1);
  * 全局状态
  */
 defineProperty(_global, 'config', {});
-/**
- * 用于缓存的版本的管理
- */
-defineProperty(_global, 'version', '1.0');
+
 /**
  * 记忆滚动
  */
@@ -68,7 +75,7 @@ defineProperty(_global, 'landingSharePage', `${location.origin}${location.pathna
 defineProperty(_global, 'GUID', location.host.split(".")[0]);
 /**
  * APIS组件的清理
- * @return {}     
+ * @return {}
  */
 
 defineProperty(_global, 'APIS', {});

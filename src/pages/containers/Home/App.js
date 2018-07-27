@@ -4,6 +4,7 @@ export const homeConfig = [
 	{
 		path: '/home',
 		// component: Layout, // 移动端可以去掉，PC端使用
+		indexRoute: { onEnter: (nextState, replace) => replace('/home/main') },
 		childRoutes: [
 			{
 				path: 'main',
@@ -12,8 +13,12 @@ export const homeConfig = [
 						cb(null, require('./Modules/HomeMain').default);
 					});
 				},
-				// onEnter: redirectUserToHome
+				// onEnter: redirectUserToLogin
 			},
+			{
+				path: '*',
+				onEnter: (nextState, replace) => replace('/home/main')
+			}
 		]
 	},
 ];
