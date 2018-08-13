@@ -11,16 +11,13 @@ const loadingFn = (msg) => {
 };
 const loadedFn = () => {
 };
-const setCb = () => {
-
-};
 const otherCb = () => {
 
 };
 const opts = {
 
 };
-const ajax = ajaxFn(loadingFn, loadedFn, setCb, otherCb, opts);
+const ajax = ajaxFn(loadingFn, loadedFn, otherCb, opts);
 let net = {
 	ajax
 };
