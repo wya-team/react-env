@@ -226,7 +226,8 @@ const defaultConfig = {
 		// proxy: {
 		// 	"/api": {
 		// 		target: "http://test.com",
-		// 		pathRewrite: {"^/api" : ""}
+		// 		pathRewrite: {"^/api" : ""},
+		// 		changeOrigin: true, // 带上当前的headers
 		// 	}
 		// },
 		hot: true, // 同--hot
