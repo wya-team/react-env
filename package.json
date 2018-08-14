@@ -45,7 +45,7 @@
     "react-router-redux": "^4.0.8",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "wya-fetch": "^0.2.0",
+    "wya-fetch": "^0.3.0",
     "wya-qrcode": "^0.1.1",
     "wya-rc": "^0.3.10",
     "wya-sass": "^0.2.2",
