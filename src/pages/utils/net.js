@@ -23,6 +23,7 @@ const beforeFn = (_opts) => {
 		// 		...token
 		// 	}
 		// });
+		resolve();
 	});
 };
 /**
@@ -73,11 +74,11 @@ const otherFn = (res) => {
 };
 
 const defaultOptions = {
-	onLoading: loadingFn,
-	onLoaded: loadedFn,
-	onBefore: beforeFn,
-	onAfter: afterFn,
-	onOther: otherFn
+	// onLoading: loadingFn,
+	// onLoaded: loadedFn,
+	// onBefore: beforeFn,
+	// onAfter: afterFn,
+	// onOther: otherFn
 };
 const ajax = ajaxFn(defaultOptions);
 let net = {
