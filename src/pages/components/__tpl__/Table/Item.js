@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Modal, Button, message, Input, Checkbox } from 'antd';
-import * as types from '@constants/actions/__tpl__';
 // 置顶
 // 类目名称
 // 类目级数
@@ -23,7 +22,7 @@ class Item extends Component {
 			content: '',
 			iconType: "",
 			onOk: () => {
-				let url = types.TPL_TABLE_ITEM_DELETE;
+				let url = 'TPL_TABLE_ITEM_DELETE';
 				let param = {};
 				let params = {
 					param: param,
@@ -47,7 +46,7 @@ class Item extends Component {
 			content: '',
 			iconType: "",
 			onOk: () => {
-				let url = types.TPL_TABLE_ITEM_POST;
+				let url = 'TPL_TABLE_ITEM_POST';
 				let param = {};
 				let params = {
 					param: param,
@@ -71,7 +70,7 @@ class Item extends Component {
 			content: '',
 			iconType: "",
 			onOk: () => {
-				let url = types.TPL_TABLE_ITEM_PUT;
+				let url = 'TPL_TABLE_ITEM_PUT';
 				let param = {};
 				let params = {
 					param: param,
@@ -79,6 +78,7 @@ class Item extends Component {
 					onSuccess: (res) => {
 					},
 					onError: (res) => {
+						message.error(res.msg, 1.5);
 					}
 				};
 				this.props.actions.request(url, params, {});

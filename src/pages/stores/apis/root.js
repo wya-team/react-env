@@ -1,28 +1,13 @@
-import { DEV_WITH_SERVER } from './constants';
-import __tpl__ from './api/__tpl__';
-import _common from './api/_common';
-import login from './api/login';
+import { DEV_WITH_SERVER } from '../../constants/constants';
+import __tpl__ from './__tpl__';
+import _common from './_common';
+import login from './login';
 
 const API = {
 	...__tpl__,
 	..._common,
 	...login,
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 let baseUrl;
@@ -39,6 +24,10 @@ if (__DEV__) {
 	baseUrl = `${location.origin}`;
 }
 for (let i in API) {
-	API[i] = baseUrl + API[i];
+	if (/[a-zA-z]+:\/\/[^\s]*/.test(API[i])) {
+		API[i] = API[i];
+	} else {
+		API[i] = baseUrl + API[i];
+	}
 }
 export default API;

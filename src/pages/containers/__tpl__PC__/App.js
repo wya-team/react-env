@@ -1,4 +1,4 @@
-// import { redirectUserToLogin, redirectUserToHome } from '../../router/auth';
+// import { redirectUserToLogin, redirectUserToHome } from '../../routers/auth';
 import Layout from './Modules/Layout/Layout';
 export const tplPCConfig = [
 	{

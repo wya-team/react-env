@@ -2,8 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as creators from '@actions/__tpl__';
-import * as types from '@constants/actions/__tpl__';
+import * as creators from '@stores/actions';
 import Content from '@components/__tpl__/Table/Content';
 import Filter from '@components/__tpl__/Table/Filter';
 import SetTitle from '@components/_common/SetTitle/SetTitle';
@@ -18,7 +17,7 @@ class Container extends Component {
 		return;
 		const { tplTable: { info } } = $props; 
 		if (info.isFetching === 0) {
-			let url = types.TPL_TABLE_INFO_GET;
+			let url = 'TPL_TABLE_INFO_GET';
 			let param = {};
 
 			let params = {
@@ -33,23 +32,14 @@ class Container extends Component {
 		}
 	}
 	render() {
-		// const { 
-		// 	locationBeforeTransitions: { 
-		// 		locationBeforeTransitions: { query } 
-		// 	} } = this.props.routing;
-		const { resetPage, tplTable, actions, location: { query } } = this.props;
-		const { info, keyword, ...listInfo } = tplTable || {};
-		const _keyword = keyword || query.keyword;
-
-		console.log(listInfo);
+		const { locationBeforeTransitions: { query } } = this.props.routing;
+		const { tplTable, actions } = this.props;
 		return (
 			<Fragment>
-				<Filter actions={actions} keyword={_keyword}/>
+				<Filter actions={actions} query={query}/>
 				<Content 
-					listInfo={listInfo}
-					keyword={_keyword}
+					listInfo={tplTable}
 					actions={actions}
-					resetPage={resetPage}
 				/>
 			</Fragment>
 		);
@@ -58,9 +48,8 @@ class Container extends Component {
 
 function mapStateToProps(state) {
 	return {
-		tplMain: state.tplMain,
+		routing: state.routing,
 		tplTable: state.tplTable,
-		// routing: state.routing,
 	};
 }
 

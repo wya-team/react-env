@@ -43,17 +43,17 @@ class Aside extends Component {
 		});
 	}
 	render() {
-		const { collapsed, actions, getRoutes } = this.props;
+		const { collapsed, actions, getRoutes, style } = this.props;
 		const { mode, selectedKey, openKey } = this.state;
 		const user = getCookie("userManage") || {};
 		return (
 			<Layout.Sider
 				trigger={null}
+				theme="light"
 				breakpoint="lg"
 				collapsible
 				collapsed={collapsed} // 是否折叠
-				// onCollapse={this.handleCollapse}
-				style={{ overflowY: 'auto' }}
+				style={style}
 			>
 				<div
 					style={{ height: 64, textAlign: 'center', color: 'white' }}

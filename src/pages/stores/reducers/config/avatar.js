@@ -1,19 +1,17 @@
-import * as types from '@constants/actions/config';
-
 const initialState = {
 	isFetching: 0,
 	avatar: ""
 };
 export const configAvatar = (state = initialState, action) => {
 	switch (action.type) {
-		case types.CONFIG_AVATAR_GET + '_SUCCESS':
+		case 'CONFIG_AVATAR_GET_SUCCESS':
 			state = {
 				...state,
 				isFetching: 1,
 				avatar: ''
 			};
 			return state;
-		case types.CONFIG_AVATAR_POST + '_SUCCESS':
+		case 'CONFIG_AVATAR_POST_SUCCESS':
 			state = {
 				...state,
 				avatar: ''

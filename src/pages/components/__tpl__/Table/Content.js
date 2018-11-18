@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button, Pagination } from 'antd';
-import * as types from '@constants/actions/__tpl__';
 import { Paging } from 'wya-rc';
 import Item from './Item';
 
@@ -24,7 +23,7 @@ class Content extends Component {
 		if (listInfo.isEnd > 0) { // 只有状态为0时才可以加载数据
 			return false;
 		}
-		let url = types.TPL_TABLE_LIST_GET;
+		let url = 'TPL_TABLE_LIST_GET';
 		let param = {
 			page: page || 1,
 			keyword
@@ -40,14 +39,15 @@ class Content extends Component {
 		this.props.actions.request(url, params, { setPage: itemArr[page] });
 	}
 	render() {
-		const { listInfo, actions, resetPage, keyword } = this.props;
-		const { isEnd, curPage, totalPage, itemArr, itemObj } = listInfo;
+		const { listInfo, actions, keyword } = this.props;
+		const { isEnd, curPage, totalPage, itemArr, itemObj, resetPage } = listInfo;
 
 		const rowSelection = {
 			
 		};
 		return (
 			<Paging 
+				history
 				title={title}
 				isEnd={isEnd}
 				curPage={curPage}

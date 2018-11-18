@@ -1,5 +1,5 @@
-import net from '../utils/net';
-import API_ROOT from '../constants/apiRoot';
+import net from '../../utils/net';
+import API_ROOT from '../apis/root';
 const middlewareApi = store => next => action => {
 	let API_OPT = action['API'];
 

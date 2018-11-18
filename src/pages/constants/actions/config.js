@@ -1,1 +1,0 @@
-export const CONFIG_INIT_AVATAR = 'CONFIG_INIT_AVATAR';

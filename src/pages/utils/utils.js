@@ -1,3 +1,4 @@
+import { isEqualWith } from 'lodash';
 // -- 微一案工具库 -- 
 export * from 'wya-utils';
 // -- end -- 
@@ -184,3 +185,35 @@ export const vaildRoute = (routes) => {
 };
 
 // -- end --
+
+/**
+ * for Service Compare
+ */
+export const serviceObj = {
+	param: {},
+	data: undefined
+};
+export const serviceCompare = (newParam, localObj) => {
+	return isEqualWith(newParam, localObj.param)
+		? localObj.data
+		: undefined;
+};
+
+const now = +(new Date());
+let index = 0;
+export const getStyleId = () => {
+	return `g-antd-select-container-${now}-${++index}`;
+};
+
+export const initTreeData = (obj, value, label, children) => {
+	if (typeof obj === 'object') {
+		return JSON.parse(
+			JSON.stringify(obj)
+				.replace(new RegExp(value, 'g'), 'value')
+				.replace(new RegExp(label, 'g'), 'label')
+				.replace(new RegExp(`children|${children}`, 'g'), 'children')
+		);
+	};
+	console.error('参数错误');
+	return [];
+};

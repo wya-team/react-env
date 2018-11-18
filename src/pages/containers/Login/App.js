@@ -1,4 +1,4 @@
-import { redirectUserToLogin, redirectUserToHome } from '../../router/auth';
+import { redirectUserToLogin, redirectUserToHome } from '../../routers/auth';
 export const loginConfig = [
 	{
 		path: '/login',

@@ -2,8 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as creators from '@actions/__tpl__';
-import * as types from '@constants/actions/__tpl__';
+import * as creators from '@stores/actions';
 // 公用组件
 import SetTitle from '@components/_common/SetTitle/SetTitle';
 // 业务组件
@@ -15,7 +14,7 @@ class Container extends Component {
 	}
 	componentDidMount() {
 		if (this.props.tplMain.isFetching === 0) {
-			let url = types.TPL_MAIN_GET;
+			let url = 'TPL_MAIN_GET';
 			let param = {};
 
 			let params = {

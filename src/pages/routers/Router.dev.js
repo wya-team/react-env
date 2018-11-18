@@ -5,10 +5,9 @@ import 'babel-polyfill';
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { render } from 'react-dom';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import configureStore from '../stores/configureStore';
-import { initialState } from '../stores/stores';
+import createStore from '../stores/root';
+import { initialState } from '../stores/state';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { Router, IndexRoute, Route, browserHistory, useRouterHistory, hashHistory } from 'react-router';
 import { defineProperty } from '../utils/utils';
@@ -29,7 +28,7 @@ import { DEBUG } from '../constants/constants';
  */
 import { routeConfig } from './routes.js';
 
-const store = configureStore(initialState);
+const store = createStore(initialState);
 
 defineProperty(_global, 'history', syncHistoryWithStore(browserHistory, store));
 

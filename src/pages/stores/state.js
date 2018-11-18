@@ -1,5 +1,6 @@
 /**
- * 状态树；configureStore中initialState
+ * 状态树；store中initialState
+ * 服务端渲染
  */
 import { getItem, getHash } from '@utils/utils';
 /**

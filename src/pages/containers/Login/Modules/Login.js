@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as LoginActions from '@actions/login';
+import * as creators from '@stores/actions';
 // 组件
 import Form from '@components/Login/Form';
 import Header from '@components/Login/Header';
@@ -33,7 +33,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		actions: bindActionCreators(LoginActions, dispatch)
+		actions: bindActionCreators(creators, dispatch)
 	};
 }
 

@@ -4,25 +4,39 @@ import Aside from './Aside';
 // redux
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as LayoutActions from '@actions/layout';
-import * as typesLogin from '@constants/actions/login';
+import * as creators from '@stores/actions';
 import { delCookie } from '@utils/utils';
 import Top from './TopNav';
 import Left from './LeftNav';
-function mapStateToProps(state) {
-	return {
-		layoutMain: state.layoutMain
-	};
-}
+const asideStyle = {
+	overflowY: 'auto',
+	background: '#001529',
+	marginRight: 8,
+	boxShadow: `0 10px 6px rgba(0,0,0,.1)`,
+	position: 'fixed',
+	top: 0,
+	bottom: 0,
+	left: 0,
+	zIndex: 4,
+};
 
-function mapDispatchToProps(dispatch) {
-	return {
-		actions: bindActionCreators(LayoutActions, dispatch)
-	};
-}
+const headerStyle = { 
+	background: "white",
+	position: 'fixed', 
+	top: 0, 
+	left: 210, 
+	right: 0,
+	zIndex: 10
+};
+
+const contentStyle = {
+	paddingRight: 10,
+	paddingLeft: 210,
+	paddingTop: 66
+};
 
 // decorator
-export default (opts = {}) => function createDecorator(LeftNav = Left, TopNav = Top) {
+export default (opts = {}) => (LeftNav = Left, TopNav = Top) => {
 	const { id, path, footer, getRoutes } = opts;
 	class LayoutDecorator extends Component {
 		constructor() {
@@ -66,9 +80,16 @@ export default (opts = {}) => function createDecorator(LeftNav = Left, TopNav = 
 			return (
 				<div className="g-reset-antd g-reset">
 					<Layout className="ant-layout-has-sider g-ant-layout">
-						<Aside path={pathname} collapsed={collapsed} component={LeftNav} actions={actions} getRoutes={getRoutes}/>
+						<Aside 
+							path={pathname} 
+							collapsed={collapsed} 
+							component={LeftNav} 
+							actions={actions} 
+							getRoutes={getRoutes}
+							style={asideStyle}
+						/>
 						<Layout className="g-ant-layout" id="contents">
-							<Layout.Header className="g-flex g-bg-white g-ai-c g-pd" style={{ background: "white" }}>
+							<Layout.Header className="g-flex g-bg-white g-ai-c g-pd"  style={headerStyle}>
 								{
 									TopNav
 										? (
@@ -97,7 +118,7 @@ export default (opts = {}) => function createDecorator(LeftNav = Left, TopNav = 
 										)
 								}
 							</Layout.Header>
-							<Layout.Content style={{ margin: '10px 10px 0 10px', overflow: 'initial', height: _global.innerHeight - 64, overflow: "auto" }}>
+							<Layout.Content style={contentStyle}>
 								{this.props.children}
 							</Layout.Content>
 						</Layout>
@@ -106,6 +127,9 @@ export default (opts = {}) => function createDecorator(LeftNav = Left, TopNav = 
 			);
 		}
 	};
-	return connect(mapStateToProps, mapDispatchToProps)(LayoutDecorator);
+	return connect(
+		state => state.layoutMain, 
+		dispatch => ({ actions: bindActionCreators(creators, dispatch) })
+	)(LayoutDecorator);
 };
 

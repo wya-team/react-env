@@ -2,8 +2,7 @@ import React, { Component, Fragment } from 'react'; ;
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as creators from '@actions/home';
-import * as types from '@constants/actions/home';
+import * as creators from '@stores/actions';
 // 公用组件
 // import SetTitle from '@components/_common/SetTitle/SetTitle';
 // 业务组件

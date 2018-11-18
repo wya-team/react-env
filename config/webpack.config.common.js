@@ -66,12 +66,12 @@ const webpackConfig = {
 			// '@'								: path.resolve(APP_ROOT, 'src/pages'),
 			'@common': path.resolve(APP_ROOT, 'src/pages/components/_common'),
 			// 主端
-			'@actions': path.resolve(APP_ROOT, 'src/pages/actions'),
 			'@components': path.resolve(APP_ROOT, 'src/pages/components'),
 			'@constants': path.resolve(APP_ROOT, 'src/pages/constants'),
 			'@utils': path.resolve(APP_ROOT, 'src/pages/utils'),
-			'@router': path.resolve(APP_ROOT, 'src/pages/router'),
-			'@services': path.resolve(APP_ROOT, 'src/pages/services'),
+			'@routers': path.resolve(APP_ROOT, 'src/pages/routers'),
+			'@stores': path.resolve(APP_ROOT, 'src/pages/stores'),
+			'@services': path.resolve(APP_ROOT, 'src/pages/stores/services'),
 		}
 	},
 	entry: {

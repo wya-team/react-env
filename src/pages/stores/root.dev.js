@@ -1,11 +1,11 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import { Router, Route, browserHistory, hashHistory, useRouterHistory } from 'react-router';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
-import rootReducer from '../reducers/rootReducer';
+import rootReducer from './reducers/root';
 import thunk from 'redux-thunk';
 import { persistState } from 'redux-devtools';
 import DevTools from '@components/DevTools/DevTools';
-import api from '../middleware/api';
+import api from './middlewares/api';
 import { DEBUG } from '../constants/constants';
 
 
@@ -42,8 +42,8 @@ export default function configureStore(initialState) {
 
 	// 热替换选项
 	if (module.hot) {
-		module.hot.accept('../reducers/rootReducer', () => {
-			const nextRootReducer = require('../reducers/rootReducer').default;
+		module.hot.accept('./reducers/root', () => {
+			const nextRootReducer = require('./reducers/root').default;
 			store.replaceReducer(nextRootReducer);
 		});
 	}

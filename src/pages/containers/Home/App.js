@@ -1,4 +1,4 @@
-import { redirectUserToLogin, redirectUserToHome } from '@router/auth';
+import { redirectUserToLogin, redirectUserToHome } from '@routers/auth';
 // import Layout from './Layout/Layout';
 export const homeConfig = [
 	{

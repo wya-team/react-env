@@ -1,15 +1,14 @@
-import * as types from '@constants/actions/__tpl__';
 const initialState = {
 	isFetching: 0,      // 是否已经获取 
 	didInvalidate: 1    // 是否失效
 };
 export const tplSecond = (state = initialState, action) => {
 	switch (action.type) {
-		case types.TPL_SECOND_GET + '_ON':
+		case 'TPL_SECOND_GET_ON':
 			return state;
-		case types.TPL_SECOND_GET + '_SUCCESS':
+		case 'TPL_SECOND_GET_SUCCESS':
 			return state;
-		case types.TPL_SECOND_GET + '_ERROR':
+		case 'TPL_SECOND_GET_ERROR':
 			return state;
 		default:
 			return state;

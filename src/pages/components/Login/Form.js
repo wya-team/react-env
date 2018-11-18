@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import * as types from '@constants/actions/login';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
-import { createLoginAuth } from '@router/auth';
+import { createLoginAuth } from '@routers/auth';
 import { hot } from 'react-hot-loader';
 @hot(module)
 @Form.create()
