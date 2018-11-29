@@ -9,7 +9,7 @@ import { createLoginAuth } from './auth';
 /**
  * 主要目的是禁止随意操作全局对象
  */
-let GLOBAL_OBJECT = new Proxy({}, {
+let GLOBAL_OBJECT = typeof Proxy === 'function' ? new Proxy({}, {
 	get: (obj, key) => {
 		if (!(key in obj)) {
 			throw new Error(`${key} isn't in _global`);
@@ -24,7 +24,7 @@ let GLOBAL_OBJECT = new Proxy({}, {
 		};
 		throw new Error(`_global had inited, so you can't add key with '${key}'`);
 	}
-});
+}) : {};
 
 BROWSER ? window._global = GLOBAL_OBJECT : this._global = GLOBAL_OBJECT;
 BROWSER ? window.__DEV__ = process.env.NODE_ENV : this.__DEV__ = process.env.NODE_ENV;
